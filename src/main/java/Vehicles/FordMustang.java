@@ -2,24 +2,23 @@ package Vehicles;
 
 import Driving.Car;
 
-public class HondaCivic extends Car {
+public class FordMustang extends Car {
     /**
-     * A civic should need an oil change every
-     * 50,000 miles traveled. Once the oil is
-     * changed, the car may travel another 50,000
+     * A mustang should need an oil change every
+     * 35,000 miles traveled. Once the oil is
+     * changed, the car may travel another 35,000
      * miles before needing another oil change.
      *
      * @return true if an oil change is needed
      */
     @Override
     public Boolean needsOilChange() {
-        return milesSinceOilChange == 50000.0;
+        return milesSinceOilChange == 35000.0;
     }
-
     /**
      * This method should reset any flags set
      * from when an oil change was needed. It
-     * should also indicate that another 50,000
+     * should also indicate that another 35,000
      * miles may be traveled before another oil
      * change is needed.
      */
@@ -27,7 +26,6 @@ public class HondaCivic extends Car {
     public void changeOil() {
         milesSinceOilChange = 0.0;
     }
-
     /**
      * the check engine light should be on whenever
      * something is wrong with the car. This class
@@ -39,7 +37,6 @@ public class HondaCivic extends Car {
     public Boolean checkEngineLight() {
         return needsOilChange();
     }
-
     /**
      * This method should return the total distance
      * traveled by the car. This number can never
@@ -52,16 +49,14 @@ public class HondaCivic extends Car {
     public Double getDistanceTraveled() {
         return distanceTraveled;
     }
-
     /**
-     * Should return the top speed for a Civic (70 MPH)
-     * @return 70.0
+     * Should return the top speed for a Mustang (100 MPH)
+     * @return 100.0
      */
     //@Override
     public Double getTopSpeed() {
-        return 70.0;
+        return 100.0;
     }
-    
     /**
      * transport should calculate the time it takes in
      * seconds to travel a distance base on the top
