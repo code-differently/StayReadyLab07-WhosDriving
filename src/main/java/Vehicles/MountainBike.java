@@ -3,6 +3,17 @@ package Vehicles;
 import Driving.Bike;
 
 public class MountainBike extends Bike {
+    private final Integer RECOMMENDEDTIREPRESSURE;
+    private final Double TOPSPEED;
+    private Integer actualTirePressure;
+    private Double actualSpeed;
+
+    public MountainBike() {
+        this.RECOMMENDEDTIREPRESSURE = 30;
+        this.TOPSPEED = 28.5;
+        this.actualTirePressure = 0;
+        this.actualSpeed = 0.0;
+    }
     /**
      * The top speed of a mountain bike should be 28.5
      * but for every 1 PSI under the recommended tire
@@ -11,9 +22,14 @@ public class MountainBike extends Bike {
      *
      * @return 28.5 minus any reduction to top speed
      */
-    @Override
     public Double getTopSpeed() {
-        return null;
+        Double actualSpeed = this.TOPSPEED;
+        int speedReduction = 0;
+        if(this.actualTirePressure < this.RECOMMENDEDTIREPRESSURE) {
+           speedReduction = this.RECOMMENDEDTIREPRESSURE - this.actualTirePressure;
+        }
+        actualSpeed -= speedReduction;
+        return actualSpeed;
     }
 
 
@@ -30,9 +46,21 @@ public class MountainBike extends Bike {
      * @param distance - length of travel in miles
      * @return time in seconds to travel distance
      */
-    @Override
     public Integer transport(Double distance) {
-        return null;
+        Double actualSpeed = this.TOPSPEED;
+        //first part converts the time it takes for a trip into seconds
+        Integer timeInHours = (int) (distance / getTopSpeed());
+        Integer timeInMinutes = timeInHours / 60;
+        Integer timeInSeconds = timeInHours / 3600;
+
+        //gives amount of reductions for every 30 minutes
+        Integer amountToReduce = timeInMinutes % 30;
+        Integer newTirePressure = getTirePressure() - amountToReduce;
+        if(newTirePressure >= 20) {
+            this.actualTirePressure = newTirePressure;
+        }
+
+        return timeInSeconds;
     }
 
     /**
@@ -43,7 +71,7 @@ public class MountainBike extends Bike {
      */
     @Override
     public Integer getTirePressure() {
-        return null;
+        return this.actualTirePressure;
     }
 
     /**
@@ -60,6 +88,6 @@ public class MountainBike extends Bike {
      */
     @Override
     public Integer recommendedTirePressure() {
-        return null;
+        return this.RECOMMENDEDTIREPRESSURE;
     }
 }
