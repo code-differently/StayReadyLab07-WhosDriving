@@ -2,7 +2,7 @@ package Vehicles;
 
 import Driving.Car;
 
-public class HondaCivic extends Car {
+public class FordMustang extends Car {
     protected double milesTraveled;
     /**
      * A civic should need an oil change every
@@ -20,6 +20,10 @@ public class HondaCivic extends Car {
             return true;
         }
         return false;
+    }
+
+    public void setDistanceTraveled(){
+        this.distanceTraveled = milesTraveled;
     }
 
     /**
@@ -64,10 +68,6 @@ public class HondaCivic extends Car {
         return milesTraveled;
     }
 
-    public void setDistanceTraveled(){
-        this.distanceTraveled = milesTraveled;
-    }
-
     /**
      * Should return the top speed for a Civic (70 MPH)
      * @return 70.0
@@ -91,4 +91,5 @@ public class HondaCivic extends Car {
         int returnVal = (int) timeInSeconds;
         return returnVal;
     }
+
 }
