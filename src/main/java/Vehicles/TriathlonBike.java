@@ -2,7 +2,7 @@ package Vehicles;
 
 import Driving.Bike;
 
-public class MountainBike extends Bike {
+public class TriathlonBike extends Bike {
 
     private int cPsi = 30;
     private final int PSI = 30;

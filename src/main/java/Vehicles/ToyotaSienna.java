@@ -2,12 +2,12 @@ package Vehicles;
 
 import Driving.Car;
 
-public class HondaCivic extends Car {
+public class ToyotaSienna extends Car {
 
     private double distance = 0;
     private double totalDistance = 0;
     private boolean oil = false;
-    private final double SPEED = 70;
+    private final double SPEED = 120;
     /**
      * A civic should need an oil change every
      * 50,000 miles traveled. Once the oil is

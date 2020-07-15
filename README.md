@@ -20,7 +20,7 @@ Make sure you test EVERY public method
 
 In this lab you will find bases classes for *Bike* and *Car*. Both implement the *Drivable* interface, so take time to look and understand this interface. The purpose of the *Drivable* interface is to enforce the functionality of being drivable. Objects that implement this interface will allow transportation for a given distance and at a designated top speed. Pay attention to the comments that accompany some of the method declarations to see what side effects are present when executing that functionality.
 
-The classes you will need to implement logic and complete are the *App*, *HondaCivic*, and MountainBike classes. Make sure to read through all the class and interface files to find the specific implementation details.
+The classes you will need to implement logic and complete are the *App*, *toyataSienna*, and MountainBike classes. Make sure to read through all the class and interface files to find the specific implementation details.
 
 ## Part 2   
 

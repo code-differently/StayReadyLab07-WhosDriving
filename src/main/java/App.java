@@ -1,5 +1,7 @@
 import Driving.Drivable;
+import Vehicles.*;
 
+import java.lang.management.MonitorInfo;
 import java.util.Scanner;
 
 public class App {
@@ -17,8 +19,8 @@ public class App {
      */
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        if (args[0].equals("test"))
-            in = new Scanner(args[1]);
+       // if (args[0].equals("test"))
+         //   in = new Scanner(args[1]);
         Console c = new Console(in);
 
         System.out.println("What kinda of vehicle do you want to drive");
@@ -44,6 +46,24 @@ public class App {
      */
     public static Drivable getVehicle(Console c) {
         String input = c.getInput();
+        if(input.equalsIgnoreCase("Honda Civic")){
+            return new HondaCivic();
+        }
+        else if(input.equalsIgnoreCase("Mountain Bike")){
+            return new MountainBike();
+        }
+        else if(input.equalsIgnoreCase("Toyota Sienna")){
+            return new ToyotaSienna();
+        }
+        else if(input.equalsIgnoreCase("Triathlon Bike")){
+            return new TriathlonBike();
+        }
+        else if(input.equalsIgnoreCase("Teleporter")){
+            return new Teleporter();
+        }
+        else{
+            getVehicle(c);
+        }
         return null;
     }
 
@@ -56,6 +76,6 @@ public class App {
      */
     public static Double getDistance(Console c) {
         String input = c.getInput();
-        return null;
+        return Double.parseDouble(input);
     }
 }
