@@ -6,11 +6,16 @@ public class HondaCivic extends Car {
     private boolean needsOilChange;
     private final double topSpeed;
     private Double totalDistance;
+    private Double previousDistance;
+    private int numTrips;
+
 
     public HondaCivic() {
         needsOilChange = false;
         topSpeed = 70.0;
         totalDistance = 0.0;
+        previousDistance = 0.0;
+        numTrips = 0;
     }
     /**
      * A civic should need an oil change every
@@ -24,12 +29,14 @@ public class HondaCivic extends Car {
     public Boolean needsOilChange() {
         //every 50000 miles
         //if you buy a new car, you don't need to change the oil, start changing the oil after 50000
-        if(getDistanceTraveled() / 50000 > 0) {
-            this.needsOilChange = true;
+        //need the int value, otherwise you'll get a decimal number
+        int threshold = (50000 * numTrips);
+        int totalDistanceInt = getDistanceTraveled().intValue();
+        //you don't need to change the oil if you just bought a honda
+        if(numTrips != 0) {
+            this.needsOilChange = (totalDistanceInt - threshold) >= 0;
         }
-        else {
-            this.needsOilChange = false;
-        }
+
         return this.needsOilChange;
     }
 
@@ -96,6 +103,7 @@ public class HondaCivic extends Car {
 
         //update amount of miles traveled
         this.totalDistance += distance;
+        numTrips++;
 
         return timeInSeconds;
     }
