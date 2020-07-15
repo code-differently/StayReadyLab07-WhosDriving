@@ -102,4 +102,15 @@ public class HondaCivic extends Car {
 
         return returnVal;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Honda Civic";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return this.toString().equalsIgnoreCase(obj.toString());
+    }
 }
