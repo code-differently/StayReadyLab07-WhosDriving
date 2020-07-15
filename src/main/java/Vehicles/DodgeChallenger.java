@@ -2,7 +2,7 @@ package Vehicles;
 
 import Driving.Car;
 
-public class HondaCivic extends Car {
+public class DodgeChallenger extends Car {
     /**
      * A civic should need an oil change every
      * 50,000 miles traveled. Once the oil is
@@ -23,9 +23,9 @@ public class HondaCivic extends Car {
     public Boolean needsOilChange()
     {
         //checks if it 50k miles
-        if(getDistanceTraveled() == 50000)
+        if(getDistanceTraveled() > 4000)
         {
-            changeOil();
+            // changeOil();
             return true;
         }
         return false;
@@ -41,7 +41,7 @@ public class HondaCivic extends Car {
     @Override
     public void changeOil()
     {
-        System.out.println("You may travel another 50 thousand miles before needing another oil change, stay safe!");
+        System.out.println("You may travel another 4 thousand miles before needing another oil change, stay safe!");
         this.setDistanceTraveled(0);
     }
 
@@ -104,13 +104,7 @@ public class HondaCivic extends Car {
     }
 
     @Override
-    public String toString()
-    {
-        return "Honda Civic";
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return this.toString().equalsIgnoreCase(obj.toString());
+    public String toString() {
+        return "Dodge Challenger";
     }
 }
