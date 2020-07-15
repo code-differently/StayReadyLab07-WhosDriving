@@ -14,7 +14,7 @@ public class AppTest {
         // Arrange
         Scanner mockScanner = new Scanner("honda civic");
         Console mockConsole = new Console(mockScanner);
-        Drivable expected = new HondaCivic();
+        Drivable expected = new HondaCivic(); // new Drivable created in method will never be equal to expected
 
         // Act
         Drivable actual = App.getVehicle(mockConsole);
@@ -47,5 +47,58 @@ public class AppTest {
 
         // Assert
         assertEquals(App.appExecutionStatus, 0);
+        System.out.println();
+    }
+
+    @Test
+    public void main2() {
+        // Arrange
+        String[] args = {"test", "mountain bike\n50\n"};
+
+        // Act
+        App.main(args);
+
+        // Assert
+        assertEquals(App.appExecutionStatus, 0);
+        System.out.println();
+    }
+
+    @Test
+    public void main3() {
+        // Arrange
+        String[] args = {"test", "ford mustang\n95\n"};
+
+        // Act
+        App.main(args);
+
+        // Assert
+        assertEquals(App.appExecutionStatus, 0);
+        System.out.println();
+    }
+
+    @Test
+    public void main4() {
+        // Arrange
+        String[] args = {"test", "bmx bike\n33\n"};
+
+        // Act
+        App.main(args);
+
+        // Assert
+        assertEquals(App.appExecutionStatus, 0);
+        System.out.println();
+    }
+
+    @Test
+    public void main5() {
+        // Arrange
+        String[] args = {"test", "teleporter\n1000\n"};
+
+        // Act
+        App.main(args);
+
+        // Assert
+        assertEquals(App.appExecutionStatus, 0);
+        System.out.println();
     }
 }

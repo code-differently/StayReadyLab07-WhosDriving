@@ -2,25 +2,25 @@ package Vehicles;
 
 import Driving.Car;
 
-public class HondaCivic extends Car {
+public class FordMustang extends Car {
 
     /**
-     * A civic should need an oil change every
-     * 50,000 miles traveled. Once the oil is
-     * changed, the car may travel another 50,000
+     * A mustang should need an oil change every
+     * 35,000 miles traveled. Once the oil is
+     * changed, the car may travel another 35,000
      * miles before needing another oil change.
      *
      * @return true if an oil change is needed
      */
     @Override
     public Boolean needsOilChange() {
-        return milesSinceOilChange == 50000.0;
+        return milesSinceOilChange == 35000.0;
     }
 
     /**
      * This method should reset any flags set
      * from when an oil change was needed. It
-     * should also indicate that another 50,000
+     * should also indicate that another 35,000
      * miles may be traveled before another oil
      * change is needed.
      */
@@ -55,12 +55,12 @@ public class HondaCivic extends Car {
     }
 
     /**
-     * Should return the top speed for a Civic (70 MPH)
-     * @return 70.0
+     * Should return the top speed for a Mustang (100 MPH)
+     * @return 100.0
      */
     //@Override
     public Double getTopSpeed() {
-        return 70.0;
+        return 100.0;
     }
 
     /**
@@ -77,4 +77,5 @@ public class HondaCivic extends Car {
         milesSinceOilChange += distance;
         return (int)Math.round(distance / (getTopSpeed() / 3600));
     }
+
 }

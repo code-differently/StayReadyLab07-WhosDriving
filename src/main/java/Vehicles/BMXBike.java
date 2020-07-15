@@ -2,30 +2,30 @@ package Vehicles;
 
 import Driving.Bike;
 
-public class MountainBike extends Bike {
-    private int tirePressure = 30;
+public class BMXBike extends Bike {
+    private int tirePressure = 85;
 
     /**
-     * The top speed of a mountain bike should be 28.5
-     * but for every 1 PSI under the recommended tire
+     * The top speed of a BMX bike should be 57.5
+     * but for every 2 PSI under the recommended tire
      * pressure the tires of the bike are, the top
-     * speed should be reduced 1mph.
+     * speed should be reduced 2mph.
      *
-     * @return 28.5 minus any reduction to top speed
+     * @return 57.5 minus any reduction to top speed
      */
     //@Override
     public Double getTopSpeed() {
-        return 28.5 - (recommendedTirePressure() - getTirePressure());
+        return 57.5 - 2 * (recommendedTirePressure() - getTirePressure());
     }
 
     /**
      * transport should calculate the time it takes in
      * seconds to travel a distance base on the top
      * speed and update the tire pressure. Long trips
-     * on a mountain bike will reduce its PSI, so for
-     * every 30 miles traveled in a single trip, the
-     * tires of the bike should reduce 1 PSI until
-     * the tires register 20 PSI where no more air
+     * on a BMX bike will reduce its PSI, so for
+     * every 20 miles traveled in a single trip, the
+     * tires of the bike should reduce 2 PSI until
+     * the tires register 30 PSI where no more air
      * will be lost on trips.
      *
      * @param distance - length of travel in miles
@@ -33,10 +33,10 @@ public class MountainBike extends Bike {
      */
     //@Override
     public Integer transport(Double distance) {
-        if(tirePressure > 20 && distance >= 30)
-            tirePressure -= distance / 30;
-        if(tirePressure < 20)
-            tirePressure = 20;
+        if(tirePressure > 30 && distance >= 20)
+            tirePressure -= 2 * (distance / 20);
+        if(tirePressure < 30)
+            tirePressure = 30;
         return (int)Math.round(distance / (getTopSpeed() / 3600));
     }
 
@@ -60,11 +60,11 @@ public class MountainBike extends Bike {
     }
 
     /**
-     * The Recommended PSI of a mountain bike is 30
+     * The Recommended PSI of a BMX bike is 85
      * @return recommended PSI
      */
     @Override
     public Integer recommendedTirePressure() {
-        return 30;
+        return 85;
     }
 }
