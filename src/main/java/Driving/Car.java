@@ -9,6 +9,9 @@ public abstract class Car implements Drivable {
      *
      * @return true if an oil change is needed
      */
+    protected double distanceTraveled = 0.0;
+    protected double milesSinceLastOilChange = 0.0;
+
     public abstract Boolean needsOilChange();
 
     /**
@@ -38,4 +41,6 @@ public abstract class Car implements Drivable {
      * @return the total number of miles traveled
      */
     public abstract Double getDistanceTraveled();
+
+
 }

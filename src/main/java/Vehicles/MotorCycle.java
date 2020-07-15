@@ -2,11 +2,13 @@ package Vehicles;
 
 import Driving.Bike;
 
-public class MountainBike extends Bike {
+public class MotorCycle extends Bike {
+
+    public MotorCycle(){
     topSpeed = 28.5;
     recommendedTirePressure = 30;
     tirePressure = 30;
-
+}
     /**
      * The top speed of a mountain bike should be 28.5
      * but for every 1 PSI under the recommended tire
@@ -76,6 +78,6 @@ public class MountainBike extends Bike {
 
     @Override
     public String toString(){
-        return "Mountain Bike";
+        return "Motorcycle";
     }
 }
