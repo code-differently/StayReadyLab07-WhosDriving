@@ -1,4 +1,6 @@
 import Driving.Drivable;
+import Vehicles.HondaCivic;
+
 
 import java.util.Scanner;
 
@@ -42,8 +44,17 @@ public class App {
      * @param c
      * @return input from Console c as Drivable
      */
-    public static Drivable getVehicle(Console c) {
+    public static Drivable getVehicle(Console c) 
+    {
         String input = c.getInput();
+      
+       if (input.equals("honda civic"))
+       {
+           HondaCivic honda = new HondaCivic();
+           return honda;
+       }
+            
+        
         return null;
     }
 
@@ -54,8 +65,11 @@ public class App {
      * @param c
      * @return Input from Console c as Double
      */
-    public static Double getDistance(Console c) {
+    public static Double getDistance(Console c) 
+    {
         String input = c.getInput();
-        return null;
+
+        Double returnDistance = Double.parseDouble(input);
+        return returnDistance;
     }
 }

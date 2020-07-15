@@ -20,7 +20,7 @@ public class AppTest {
         Drivable actual = App.getVehicle(mockConsole);
 
         // Assert
-        Assert.assertEquals(expected, actual);
+        Assert.assertEquals(expected.getClass(), actual.getClass());
     }
 
     @Test
