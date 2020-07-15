@@ -2,20 +2,21 @@ package Vehicles;
 
 import Driving.Bike;
 
-public class MountainBike extends Bike {
+public class FixieBike extends Bike{
     /**
-     * The top speed of a mountain bike should be 28.5
+     * The top speed of a mountain bike should be 60
      * but for every 1 PSI under the recommended tire
      * pressure the tires of the bike are, the top
      * speed should be reduced 1mph.
      *
      * @return 28.5 minus any reduction to top speed
      */
-    public MountainBike() {
-        tirePressure = 30;
-        recommendedTirePressure = 30;
-        topSpeed = 28.5;
-        travel = topSpeed;
+
+    public FixieBike() {
+        tirePressure = 100;
+        recommendedTirePressure = 100;
+        topSpeed = 60.0;
+        travel = 0.0;
     }
 
     @Override
@@ -44,12 +45,12 @@ public class MountainBike extends Bike {
             time = 3600.00;
             return time.intValue();
         } else {
-            while (distance - 30 >= 0) {
+            while (distance - 100 >= 0) {
                 if (tirePressure > 20) {
                     tirePressure--;
                 }
                 topSpeed--;
-                distance -= 30;
+                distance -= 100;
                 time += distance / topSpeed;
             }
             return time.intValue() * 60 * 60;
@@ -73,8 +74,8 @@ public class MountainBike extends Bike {
      */
     @Override
     public void inflateTires() {
-        tirePressure = 30;
-        topSpeed = 28.5;
+        tirePressure = 100;
+        topSpeed = 60.0;
     }
 
     /**
@@ -83,6 +84,6 @@ public class MountainBike extends Bike {
      */
     @Override
     public Integer recommendedTirePressure() {
-        return 30;
+        return 100;
     }
 }
