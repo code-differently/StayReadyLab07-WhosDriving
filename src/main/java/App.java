@@ -1,4 +1,6 @@
 import Driving.Drivable;
+import Vehicles.HondaCivic;
+import Vehicles.MountainBike;
 
 import java.util.Scanner;
 
@@ -44,6 +46,18 @@ public class App {
      */
     public static Drivable getVehicle(Console c) {
         String input = c.getInput();
+        String[] words = input.split(" ");
+        StringBuilder str = new StringBuilder();
+        for(String word: words) {
+            //capitalizes the first letter of the word and then appends the rest. There is no space in between
+            str.append(word.substring(0, 1).toUpperCase() + word.substring(1));
+        }
+        if(str.toString().equals("HondaCivic")) {
+            return new HondaCivic();
+        }
+        else if(str.toString().equals("MountainBike")) {
+            return new MountainBike();
+        }
         return null;
     }
 
@@ -56,6 +70,7 @@ public class App {
      */
     public static Double getDistance(Console c) {
         String input = c.getInput();
-        return null;
+        Double ans = Double.parseDouble(input);
+        return ans;
     }
 }

@@ -101,4 +101,9 @@ public class MountainBike extends Bike {
     public Integer recommendedTirePressure() {
         return this.RECOMMENDEDTIREPRESSURE;
     }
+
+    @Override
+    public String toString() {
+        return "recommended tire pressure: " + this.RECOMMENDEDTIREPRESSURE + " top speed: " + this.TOPSPEED + " actualTirePressure: " + this.actualTirePressure + " actualSpeed: " + this.actualSpeed;
+    }
 }

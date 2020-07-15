@@ -110,4 +110,9 @@ public class HondaCivic extends Car {
 
         return timeInSeconds;
     }
+
+    @Override
+    public String toString() {
+        return "needsOilChange: " + needsOilChange + " topSpeed: " + topSpeed + " totalDistance: " + totalDistance + " previousDistance: " + previousDistance + " numTrips: " + numTrips;
+    }
 }
