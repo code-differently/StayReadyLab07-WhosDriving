@@ -2,14 +2,13 @@ package Vehicles;
 
 import Driving.Car;
 
-public class HondaCivic extends Car 
-{   
-    
-   private Boolean oilChange = false;
+public class Subaru extends Car
+{
+    private Boolean oilChange = false;
 
-    public HondaCivic()
+    public Subaru()
     {
-        topSpeed = 70.0;
+        topSpeed = 150.0;
         distanceTraveled = 0.0;
     }
 
@@ -80,7 +79,7 @@ public class HondaCivic extends Car
 
     /**
      * Should return the top speed for a Civic (70 MPH)
-     * @return 70.0
+     * @return 150.0
      */
     @Override
     public Double getTopSpeed() 

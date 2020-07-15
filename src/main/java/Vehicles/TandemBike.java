@@ -2,23 +2,22 @@ package Vehicles;
 
 import Driving.Bike;
 
-public class MountainBike extends Bike 
+public class TandemBike extends Bike
 {
-
-    public MountainBike()
+    public TandemBike()
     {
-        topSpeed = 28.5;
+        topSpeed = 32.5;
         tirePressure = 30;
         distanceTraveled = 0.0;
         recommendedPressure = 30;
     }
     /**
-     * The top speed of a mountain bike should be 28.5
+     * The top speed of a mountain bike should be 32.5
      * but for every 1 PSI under the recommended tire
      * pressure the tires of the bike are, the top
      * speed should be reduced 1mph.
      *
-     * @return 28.5 minus any reduction to top speed
+     * @return 32.5 minus any reduction to top speed
      */
     @Override
     public Double getTopSpeed() 

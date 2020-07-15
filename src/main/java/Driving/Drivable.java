@@ -1,6 +1,10 @@
 package Driving;
 
-public interface Drivable {
+public interface Drivable 
+{
+    Double distanceTraveled = 0.0;
+     Double topSpeed = 0.0;
+
 
     /**
      * Gets the top speed of the drivable vehicle
