@@ -11,9 +11,24 @@ public class HondaCivic extends Car {
      *
      * @return true if an oil change is needed
      */
+    private double milesTraveled;
+
+    public void setDistanceTraveled(double milesTraveled)
+    {
+        this.milesTraveled = milesTraveled;
+    }
+
+
     @Override
-    public Boolean needsOilChange() {
-        return null;
+    public Boolean needsOilChange()
+    {
+        //checks if it 50k miles
+        if(getDistanceTraveled() == 50000)
+        {
+            changeOil();
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -24,8 +39,10 @@ public class HondaCivic extends Car {
      * change is needed.
      */
     @Override
-    public void changeOil() {
-
+    public void changeOil()
+    {
+        System.out.println("You may travel another 50 thousand miles before needing another oil change, stay safe!");
+        this.setDistanceTraveled(0);
     }
 
     /**
@@ -36,8 +53,14 @@ public class HondaCivic extends Car {
      * @return true if anything is wrong with the car
      */
     @Override
-    public Boolean checkEngineLight() {
-        return null;
+    public Boolean checkEngineLight()
+    {
+        if(needsOilChange())
+        {
+            //if it needs an oil change, turn on the light
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -50,16 +73,16 @@ public class HondaCivic extends Car {
      */
     @Override
     public Double getDistanceTraveled() {
-        return null;
+        return milesTraveled;
     }
+
 
     /**
      * Should return the top speed for a Civic (70 MPH)
      * @return 70.0
      */
-    @Override
     public Double getTopSpeed() {
-        return null;
+        return 70.0;
     }
 
     /**
@@ -70,8 +93,13 @@ public class HondaCivic extends Car {
      * @param distance - length of travel in miles
      * @return time in seconds to travel distance
      */
-    @Override
-    public Integer transport(Double distance) {
-        return null;
+    public Integer transport(Double distance)
+    {
+        Double currentMileage = getDistanceTraveled();
+        double timeInSeconds =  distance / getTopSpeed() * 60 * 60;
+        setDistanceTraveled(currentMileage + distance);
+        int returnVal = (int) timeInSeconds;
+
+        return returnVal;
     }
 }
