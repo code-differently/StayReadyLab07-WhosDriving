@@ -20,7 +20,7 @@ public class MountainBike extends Bike {
 
     @Override
     public Double getTopSpeed() {
-        return topSpeed;
+        return topSpeed - (recommendedTirePressure()-getTirePressure());
     }
 
 
@@ -39,21 +39,12 @@ public class MountainBike extends Bike {
      */
     @Override
     public Integer transport(Double distance) {
-        Double time = 0.00;
-        if (distance < 30) {
-            time = 3600.00;
-            return time.intValue();
-        } else {
-            while (distance - 30 >= 0) {
-                if (tirePressure > 20) {
-                    tirePressure--;
-                }
-                topSpeed--;
-                distance -= 30;
-                time += distance / topSpeed;
-            }
-            return time.intValue() * 60 * 60;
-        }
+        if(tirePressure > 20 && distance >= 30)
+        tirePressure -= distance / 30;
+        if(tirePressure < 20)
+        tirePressure = 20;
+        return (int)(Math.round(distance/(getTopSpeed() / 3600)));
+        
     }
 
 
@@ -73,8 +64,7 @@ public class MountainBike extends Bike {
      */
     @Override
     public void inflateTires() {
-        tirePressure = 30;
-        topSpeed = 28.5;
+        tirePressure = recommendedTirePressure();
     }
 
     /**

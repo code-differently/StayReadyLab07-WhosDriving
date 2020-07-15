@@ -17,7 +17,7 @@ public class FixieBikeTest {
     @Test
     public void getTopSpeed() {
         // Arrange
-        Double expected = 28.5;
+        Double expected = 60.0;
 
         // Act
         Double actual = fixie.getTopSpeed();
@@ -29,7 +29,7 @@ public class FixieBikeTest {
     @Test
     public void getTopSpeedAfterTransport() {
         // Arrange
-        Double expected = 28.5;
+        Double expected = 60.0;
 
         // Act
         fixie.transport(30.0);
@@ -43,7 +43,7 @@ public class FixieBikeTest {
     @Test
     public void getTopSpeedAfterTransportThenInflateTires() {
         // Arrange
-        Double expected = 28.5;
+        Double expected = 60.0;
 
         // Act
         fixie.transport(30 * 2.0);
@@ -57,7 +57,7 @@ public class FixieBikeTest {
     @Test
     public void transport() {
         // Arrange
-        Integer expected = (60 * 60);
+        Integer expected = (1710);
 
         // Act
         Integer actual = fixie.transport(28.5);
@@ -95,7 +95,7 @@ public class FixieBikeTest {
     @Test
     public void transportTirePressure3() {
         // Arrange
-        Integer expected = 39;
+        Integer expected = 20;
 
         // Act
         fixie.transport(60.0 * 100);
@@ -109,7 +109,7 @@ public class FixieBikeTest {
     @Test
     public void transportTirePressure4() {
         // Arrange
-        Integer expected = 94;
+        Integer expected = 76;
 
         // Act
         fixie.transport(109.9);

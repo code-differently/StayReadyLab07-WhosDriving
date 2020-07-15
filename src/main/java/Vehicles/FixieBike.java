@@ -21,7 +21,7 @@ public class FixieBike extends Bike{
 
     @Override
     public Double getTopSpeed() {
-        return topSpeed;
+        return topSpeed - (recommendedTirePressure()-getTirePressure());
     }
 
 
@@ -40,21 +40,11 @@ public class FixieBike extends Bike{
      */
     @Override
     public Integer transport(Double distance) {
-        Double time = 0.00;
-        if (distance < 30) {
-            time = 3600.00;
-            return time.intValue();
-        } else {
-            while (distance - 100 >= 0) {
-                if (tirePressure > 20) {
-                    tirePressure--;
-                }
-                topSpeed--;
-                distance -= 100;
-                time += distance / topSpeed;
-            }
-            return time.intValue() * 60 * 60;
-        }
+        if(tirePressure > 20 && distance >= 100)
+        tirePressure -= distance / 30;
+        if(tirePressure < 20)
+        tirePressure = 20;
+        return (int)(Math.round(distance/(getTopSpeed() / 3600)));
     }
 
 
