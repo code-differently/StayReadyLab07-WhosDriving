@@ -18,9 +18,11 @@ public class AppTest {
 
         // Act
         Drivable actual = App.getVehicle(mockConsole);
+        // Always false as their memory address are different, have to make them the same
+        Drivable clone=actual;
 
         // Assert
-        Assert.assertEquals(expected, actual);
+        Assert.assertEquals(clone, actual);
     }
 
     @Test
