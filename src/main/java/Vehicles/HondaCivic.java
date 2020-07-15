@@ -30,11 +30,12 @@ public class HondaCivic extends Car {
         //every 50000 miles
         //if you buy a new car, you don't need to change the oil, start changing the oil after 50000
         //need the int value, otherwise you'll get a decimal number
-        int threshold = (50000 * numTrips);
-        int totalDistanceInt = getDistanceTraveled().intValue();
+        double threshold = (50000 * numTrips);
+        double totalDistanceInt = getDistanceTraveled();
         //you don't need to change the oil if you just bought a honda
         if(numTrips != 0) {
-            this.needsOilChange = (totalDistanceInt - threshold) >= 0;
+            //distance has to be at least 50000 for an oil change
+            this.needsOilChange = (totalDistanceInt - threshold) > 0;
         }
 
         return this.needsOilChange;
