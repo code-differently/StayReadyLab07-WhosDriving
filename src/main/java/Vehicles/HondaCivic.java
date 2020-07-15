@@ -1,8 +1,16 @@
 package Vehicles;
 
+
 import Driving.Car;
 
 public class HondaCivic extends Car {
+    private double distanceTotal;
+    private double currentDistance;
+
+    public HondaCivic(){
+        this.distanceTotal=0.0;
+        this.currentDistance=0.0;
+    }
     /**
      * A civic should need an oil change every
      * 50,000 miles traveled. Once the oil is
@@ -13,7 +21,9 @@ public class HondaCivic extends Car {
      */
     @Override
     public Boolean needsOilChange() {
-        return null;
+        if(this.currentDistance>=50000)
+            return true;
+        return false;
     }
 
     /**
@@ -25,7 +35,7 @@ public class HondaCivic extends Car {
      */
     @Override
     public void changeOil() {
-
+        this.currentDistance=0.0;
     }
 
     /**
@@ -37,7 +47,10 @@ public class HondaCivic extends Car {
      */
     @Override
     public Boolean checkEngineLight() {
-        return null;
+        if(needsOilChange()){
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -50,7 +63,7 @@ public class HondaCivic extends Car {
      */
     @Override
     public Double getDistanceTraveled() {
-        return null;
+        return this.distanceTotal;
     }
 
     /**
@@ -58,9 +71,11 @@ public class HondaCivic extends Car {
      * @return 70.0
      */
     @Override
-    public Double getTopSpeed() {
-        return null;
+    public Double getTopSpeed(){
+        return 70.0;
     }
+
+
 
     /**
      * transport should calculate the time it takes in
@@ -72,6 +87,9 @@ public class HondaCivic extends Car {
      */
     @Override
     public Integer transport(Double distance) {
-        return null;
+        this.distanceTotal+=distance;
+        this.currentDistance+=distance;
+        Double seconds=(distance/getTopSpeed())*60*60;
+        return (int)Math.round(seconds);
     }
 }
