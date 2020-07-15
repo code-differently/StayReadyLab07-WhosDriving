@@ -2,12 +2,12 @@ package Vehicles;
 
 import Driving.Bike;
 
-public class MountainBike extends Bike {
+public class BmxBike extends Bike {
 
     // constructor
-    public MountainBike() {
+    public BmxBike() {
         // variables from bike;
-        topSpeed = 28.5;
+        topSpeed = 19;
         recommendedTirePressure = 30;
         tirePressure = 30;
     }
@@ -88,7 +88,7 @@ public class MountainBike extends Bike {
     public Integer recommendedTirePressure() {
         return recommendedTirePressure;
     }
-
+    
     @Override
     public String toString() {
         return "BMX Bike";

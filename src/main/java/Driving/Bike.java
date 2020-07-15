@@ -2,7 +2,6 @@ package Driving;
 
 public abstract class Bike implements Drivable {
     protected double topSpeed;
-    protected double travelingSpeed;
     protected int tirePressure;
     protected int recommendedTirePressure;
     /**
