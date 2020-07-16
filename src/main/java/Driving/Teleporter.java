@@ -2,15 +2,15 @@ package Driving;
 
 public class Teleporter implements Drivable {
 
-    private Double distance = 0.0;
+    private double topSpeed = 0.0;
 
     public Double getTopSpeed() {
-        return Double.MAX_VALUE;
+        return topSpeed;
     }
 
     public Integer transport(Double distance) {
-        this.distance += distance; //Instant teleportation!
-        return 0;
+        Double time = distance * topSpeed;
+        return time.intValue();
     }
 
 
