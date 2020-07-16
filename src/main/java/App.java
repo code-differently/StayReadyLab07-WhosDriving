@@ -2,6 +2,7 @@ import Driving.Drivable;
 import Vehicles.HondaCivic;
 import Vehicles.MountainBike;
 import Vehicles.RoadBike;
+import main.java.Vehicles.KiaOptima;
 
 import java.util.Scanner;
 
@@ -52,7 +53,7 @@ public class App {
             myDrive = new HondaCivic();
         }
         else if(input.equalsIgnoreCase(" kiaoptima") || input.equalsIgnoreCase("kia optima")) {
-            myDrive = new MountainBike();
+            myDrive = new KiaOptima();
         }
         else if(input.equalsIgnoreCase("mountain bike") || input.equalsIgnoreCase("mountain bike")) {
             myDrive = new MountainBike();
