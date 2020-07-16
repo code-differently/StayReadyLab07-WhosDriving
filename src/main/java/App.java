@@ -1,4 +1,9 @@
 import Driving.Drivable;
+import Vehicles.HondaCivic;
+import Vehicles.MountainBike;
+import Vehicles.RoadBike;
+import Vehicles.Teleporter;
+import Vehicles.KiaOptima;
 
 import java.util.Scanner;
 
@@ -44,7 +49,23 @@ public class App {
      */
     public static Drivable getVehicle(Console c) {
         String input = c.getInput();
-        return null;
+        Drivable myDrive;
+        if(input.equalsIgnoreCase("hondacivic") || input.equalsIgnoreCase("honda civic")) {
+            myDrive = new HondaCivic();
+        }
+        else if(input.equalsIgnoreCase(" kiaoptima") || input.equalsIgnoreCase("kia optima")) {
+            myDrive = new KiaOptima();
+        }
+        else if(input.equalsIgnoreCase("mountainbike") || input.equalsIgnoreCase("mountain bike")) {
+            myDrive = new MountainBike();
+        }
+        else if(input.equalsIgnoreCase("roadbike") || input.equalsIgnoreCase("road bike")){
+            myDrive = new RoadBike();
+        }
+        else {
+            myDrive = new Teleporter();
+        }
+        return myDrive;
     }
 
     /**
@@ -56,6 +77,7 @@ public class App {
      */
     public static Double getDistance(Console c) {
         String input = c.getInput();
-        return null;
+        Double ans = Double.parseDouble(input);
+        return ans;
     }
 }

@@ -38,4 +38,5 @@ public abstract class Car implements Drivable {
      * @return the total number of miles traveled
      */
     public abstract Double getDistanceTraveled();
+    
 }

@@ -3,23 +3,68 @@ package Vehicles;
 import Driving.Bike;
 
 public class MountainBike extends Bike {
+    private final Integer RECOMMENDEDTIREPRESSURE;
+    private final Double TOPSPEED;
+    private Integer actualTirePressure;
+    private Double actualSpeed;
+
+    public MountainBike() {
+        this.RECOMMENDEDTIREPRESSURE = 30;
+        this.TOPSPEED = 28.5;
+        this.actualTirePressure = 30;
+        this.actualSpeed = 28.5;
+    }
+
+    public Integer getRECOMMENDEDTIREPRESSURE() {
+        return RECOMMENDEDTIREPRESSURE;
+    }
+
+    public Double getTOPSPEED() {
+        return TOPSPEED;
+    }
+
+    public Integer getActualTirePressure() {
+        return actualTirePressure;
+    }
+
+    public void setActualTirePressure(Integer actualTirePressure) {
+        this.actualTirePressure = actualTirePressure;
+    }
+
+    public Double getActualSpeed() {
+        return actualSpeed;
+    }
+
+    public void setActualSpeed(Double actualSpeed) {
+        this.actualSpeed = actualSpeed;
+    }
+
     /**
      * The top speed of a mountain bike should be 28.5
-     * but for every 1 PSI under the recommended tire
+     * but for every 1 PSI of the current tire pressure under the recommended tire
      * pressure the tires of the bike are, the top
      * speed should be reduced 1mph.
      *
      * @return 28.5 minus any reduction to top speed
      */
-    @Override
     public Double getTopSpeed() {
-        return null;
+        Double actualSpeed = this.TOPSPEED;
+        //if the tires are full of air, then there will be no speed reduction
+        //thus actual speed will stay the same, but if the actualTirePressure is less than the recommended (meaning you don't have a tire full of air, potentially a flat tire), then you won't be going so fast
+        //so the top speed will decrease as a result
+        int speedReduction = 0;
+        if(this.actualTirePressure < this.RECOMMENDEDTIREPRESSURE) {
+            //say you have a tire pressure of 28 and the recommended is 30. Then you would need to subtract 2 PIS
+           speedReduction = this.RECOMMENDEDTIREPRESSURE - this.actualTirePressure;
+        }
+        actualSpeed -= speedReduction;
+        return actualSpeed;
     }
 
 
     /**
      * transport should calculate the time it takes in
-     * seconds to travel a distance base on the top
+     * seconds to travel a distance based on the top
      * speed and update the tire pressure. Long trips
      * on a mountain bike will reduce its PSI, so for
      * every 30 miles traveled in a single trip, the
@@ -30,9 +75,28 @@ public class MountainBike extends Bike {
      * @param distance - length of travel in miles
      * @return time in seconds to travel distance
      */
-    @Override
     public Integer transport(Double distance) {
-        return null;
+        //first part converts the time it takes for a trip into seconds
+        Integer timeInHours = 0;
+        //trip time in hours, it could be like 3500 miles / 28.5 (the top speed of the bike) which would be 122 hours (after truncating)
+        timeInHours = (int) (distance / getTopSpeed());
+        Integer timeInSeconds = timeInHours * 3600;
+
+        //if you do Math.round then you'll get the wrong answer because for 29.9 it rounds it up to 30, and 30/30 is 1, not 0, which it should be if its 29.9/30
+        Integer distanceInt = distance.intValue();
+        //gives amount of reductions for every 30 minutes
+        //will return 0 if less than 30
+        Integer amountToReduce = distanceInt / 30;
+        Integer newTirePressure = getTirePressure() - amountToReduce;
+        //if the new tire pressure is less than 20, set the tire pressure to 20
+        if(newTirePressure < 20) {
+            this.actualTirePressure = 20;
+        }
+        //the new tire pressure is greater than 20, so set the actualTirePressure to tirePressure
+        else {
+            this.actualTirePressure = newTirePressure;
+        }
+        return timeInSeconds;
     }
 
     /**
@@ -43,7 +107,7 @@ public class MountainBike extends Bike {
      */
     @Override
     public Integer getTirePressure() {
-        return null;
+        return this.actualTirePressure;
     }
 
     /**
@@ -51,7 +115,7 @@ public class MountainBike extends Bike {
      */
     @Override
     public void inflateTires() {
-
+        this.actualTirePressure = this.RECOMMENDEDTIREPRESSURE;
     }
 
     /**
@@ -60,6 +124,28 @@ public class MountainBike extends Bike {
      */
     @Override
     public Integer recommendedTirePressure() {
-        return null;
+        return this.RECOMMENDEDTIREPRESSURE;
+    }
+
+    @Override
+    public String toString() {
+        return "recommended tire pressure: " + this.RECOMMENDEDTIREPRESSURE + " top speed: " + this.TOPSPEED + " actualTirePressure: " + this.actualTirePressure + " actualSpeed: " + this.actualSpeed;
+    }
+
+    @Override
+    public boolean equals(Object otherObj) {
+        //if they reference (in same memory location) the same thing then return true
+        if(this == otherObj) return true;
+        //if the other object
+        if(otherObj == null) return false;
+        //semantics change in subclasses because the fields are different, hondacivic could have different fields then a bmwi8
+        //don't use instanceOf in this case
+        //returns the class of the object
+        if(getClass() != this.getClass()) return false;
+        //downcasting to a specific version, in this case, MountainBike
+        //this is why I override equals in each subclass and not in the abstract class for this part
+        MountainBike other = (MountainBike) otherObj;
+        //checks to see if the strings are equal
+        return other.toString().equals(other.toString());
     }
 }
