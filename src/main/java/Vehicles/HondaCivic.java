@@ -17,6 +17,39 @@ public class HondaCivic extends Car {
         previousDistance = 0.0;
         numTrips = 0;
     }
+
+    public boolean getNeedsOilChange() {
+        return needsOilChange;
+    }
+
+    public void setNeedsOilChange(boolean needsOilChange) {
+        this.needsOilChange = needsOilChange;
+    }
+
+    public Double getTotalDistance() {
+        return totalDistance;
+    }
+
+    public void setTotalDistance(Double totalDistance) {
+        this.totalDistance = totalDistance;
+    }
+
+    public Double getPreviousDistance() {
+        return previousDistance;
+    }
+
+    public void setPreviousDistance(Double previousDistance) {
+        this.previousDistance = previousDistance;
+    }
+
+    public int getNumTrips() {
+        return numTrips;
+    }
+
+    public void setNumTrips(int numTrips) {
+        this.numTrips = numTrips;
+    }
+
     /**
      * A civic should need an oil change every
      * 50,000 miles traveled. Once the oil is

@@ -8,10 +8,12 @@ import static org.junit.Assert.*;
 
 public class MountainBikeTest {
     Bike mb;
+    MountainBike bike;
 
     @Before
     public void setUp() throws Exception {
         this.mb = new MountainBike();
+        this.bike = new MountainBike();
     }
 
     @Test
@@ -163,5 +165,47 @@ public class MountainBikeTest {
 
         // Assert
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getActualTirePressureTest(){
+        double expected = 30.0;
+
+        double actual = bike.getActualTirePressure();
+
+        assertEquals(expected, actual, 0.0);
+    
+    }
+
+    @Test
+    public void setActualTirePressureTest(){
+        double expected = 30;
+
+        bike.setActualTirePressure(30);
+        double actual = bike.getActualTirePressure();
+
+        assertEquals(expected, actual, 0.0);
+    
+    }
+
+    @Test
+    public void getActualSpeedTest(){
+        double expected = 28.5;
+
+        double actual = bike.getActualSpeed();
+
+        assertEquals(expected, actual, 0.0);
+    
+    }
+
+    @Test
+    public void setActualSpeedTest(){
+        double expected = 28.5;
+
+        bike.setActualTirePressure(28);
+        double actual = bike.getActualSpeed();
+
+        assertEquals(expected, actual, 0.0);
+    
     }
 }

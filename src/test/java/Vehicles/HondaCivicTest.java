@@ -9,10 +9,88 @@ import static org.junit.Assert.*;
 public class HondaCivicTest {
 
     Car hondaCivic = new HondaCivic();
+    HondaCivic honda = new HondaCivic();
 
     @Before
     public void setUp() throws Exception {
         this.hondaCivic = new HondaCivic();
+        this.hondaCivic = new HondaCivic();
+    }
+
+    @Test
+    public void getNeedsOilChangeTest() {
+        boolean expected = false;
+
+        boolean actual = honda.getNeedsOilChange();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void setNeedsOilChangeTest() {
+        boolean expected = true;
+
+        honda.setNeedsOilChange(true);
+        boolean actual = honda.getNeedsOilChange();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getTotalDistanceTest() {
+        double expected = 0.0;
+
+        double actual = honda.getTotalDistance();
+
+        assertEquals(expected, actual,0.0);
+    }
+
+    @Test
+    public void setTotalDistanceTest() {
+        double expected = 25.0;
+
+        honda.setTotalDistance(25.0);
+        double actual = honda.getTotalDistance();
+
+        assertEquals(expected, actual,0.0);
+    }
+
+    @Test
+    public void getPreviousDistanceTest() {
+        double expected = 0.0;
+
+        double actual = honda.getPreviousDistance();
+
+        assertEquals(expected, actual, 0.0);
+    }
+
+    @Test
+    public void setPreviousDistanceTest() {
+        double expected = 25.0;
+
+        honda.setPreviousDistance(25.0);
+        double actual = honda.getPreviousDistance();
+
+        assertEquals(expected, actual, 0.0);
+    }
+
+    @Test
+    public void getNumTripsTest() {
+        double expected = 0.0;
+
+        double actual = honda.getNumTrips();
+
+        assertEquals(expected, actual, 0.0);
+    }
+
+    @Test
+    public void setNumTripsTest() {
+        int expected = 2;
+
+        honda.setNumTrips(2);
+        int actual = honda.getNumTrips();
+
+        assertEquals(expected, actual,0.0);
     }
 
     @Test

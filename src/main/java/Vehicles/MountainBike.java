@@ -14,6 +14,31 @@ public class MountainBike extends Bike {
         this.actualTirePressure = 30;
         this.actualSpeed = 28.5;
     }
+
+    public Integer getRECOMMENDEDTIREPRESSURE() {
+        return RECOMMENDEDTIREPRESSURE;
+    }
+
+    public Double getTOPSPEED() {
+        return TOPSPEED;
+    }
+
+    public Integer getActualTirePressure() {
+        return actualTirePressure;
+    }
+
+    public void setActualTirePressure(Integer actualTirePressure) {
+        this.actualTirePressure = actualTirePressure;
+    }
+
+    public Double getActualSpeed() {
+        return actualSpeed;
+    }
+
+    public void setActualSpeed(Double actualSpeed) {
+        this.actualSpeed = actualSpeed;
+    }
+
     /**
      * The top speed of a mountain bike should be 28.5
      * but for every 1 PSI of the current tire pressure under the recommended tire
