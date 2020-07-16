@@ -1,8 +1,20 @@
 package Vehicles;
 
 import Driving.Car;
+import Driving.Drivable;
 
 public class HondaCivic extends Car {
+    private double miles; 
+    private double distanceTraveled; 
+
+    public HondaCivic(){
+        this.miles = 0.0;
+        this.distanceTraveled = 0.0; 
+    }
+
+    public void setMiles(double miles) {
+        this.miles = miles;
+    }
     /**
      * A civic should need an oil change every
      * 50,000 miles traveled. Once the oil is
@@ -13,7 +25,11 @@ public class HondaCivic extends Car {
      */
     @Override
     public Boolean needsOilChange() {
-        return null;
+        if(miles >= 50000){
+            return true; 
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -25,7 +41,8 @@ public class HondaCivic extends Car {
      */
     @Override
     public void changeOil() {
-
+        System.out.println("Oil restored! You can travel for another 50,000 miles");
+        setMiles(0);
     }
 
     /**
@@ -37,7 +54,11 @@ public class HondaCivic extends Car {
      */
     @Override
     public Boolean checkEngineLight() {
-        return null;
+        if(needsOilChange()){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -50,16 +71,17 @@ public class HondaCivic extends Car {
      */
     @Override
     public Double getDistanceTraveled() {
-        return null;
+        return this.distanceTraveled;
     }
 
     /**
      * Should return the top speed for a Civic (70 MPH)
      * @return 70.0
      */
-    @Override
+
+    //@Override
     public Double getTopSpeed() {
-        return null;
+        return 70.0 ;
     }
 
     /**
@@ -70,8 +92,26 @@ public class HondaCivic extends Car {
      * @param distance - length of travel in miles
      * @return time in seconds to travel distance
      */
-    @Override
+
+    //@Override
     public Integer transport(Double distance) {
-        return null;
+        double time = (distance / getTopSpeed())  * 3600.0; 
+        setDistanceTraveled(this.distanceTraveled + distance); //miles + distance travelled 
+        setMiles(distance);
+        return (int) time; 
+    }
+
+    public void setDistanceTraveled(double d) {
+        this.distanceTraveled = d; 
+    }
+
+    @Override
+    public String toString(){
+        return "Honda Civic";
+    }
+
+    @Override
+    public boolean equals(Object o){
+        return this.toString().equalsIgnoreCase(o.toString());
     }
 }

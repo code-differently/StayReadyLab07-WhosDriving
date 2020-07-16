@@ -3,6 +3,15 @@ package Vehicles;
 import Driving.Bike;
 
 public class MountainBike extends Bike {
+    private double topSpeed;
+    static final double recTirePressure = 30; 
+    private double tirePressure; 
+
+    public MountainBike(){
+        this.tirePressure = 30;
+        this.topSpeed = 28.5;
+    }
+
     /**
      * The top speed of a mountain bike should be 28.5
      * but for every 1 PSI under the recommended tire
@@ -11,9 +20,10 @@ public class MountainBike extends Bike {
      *
      * @return 28.5 minus any reduction to top speed
      */
-    @Override
+
+    //@Override
     public Double getTopSpeed() {
-        return null;
+        return topSpeed;
     }
 
 
@@ -30,9 +40,22 @@ public class MountainBike extends Bike {
      * @param distance - length of travel in miles
      * @return time in seconds to travel distance
      */
-    @Override
+    //@Override
     public Integer transport(Double distance) {
-        return null;
+        int limit = 20; //tire pressure limit
+        int time  = 0; 
+        if(distance - 30 < 0){
+            return 3600;
+        }
+        while (distance - 30 >= 0 ){
+            this.topSpeed --;
+            if(this.tirePressure > limit){
+                this.tirePressure--; 
+            } 
+            time += (distance / this.topSpeed);
+            distance -=  30; 
+        }
+        return time *= 3600;
     }
 
     /**
@@ -43,7 +66,11 @@ public class MountainBike extends Bike {
      */
     @Override
     public Integer getTirePressure() {
-        return null;
+        return (int) tirePressure;
+    }
+
+    public void setTirePressure(Double psi){
+        this.tirePressure = psi;
     }
 
     /**
@@ -51,7 +78,8 @@ public class MountainBike extends Bike {
      */
     @Override
     public void inflateTires() {
-
+        this.tirePressure = recTirePressure;
+        this.topSpeed = 28.5;
     }
 
     /**
@@ -60,6 +88,6 @@ public class MountainBike extends Bike {
      */
     @Override
     public Integer recommendedTirePressure() {
-        return null;
+        return (int) recTirePressure;
     }
 }
