@@ -1,6 +1,7 @@
 import Driving.Drivable;
 import Vehicles.HondaCivic;
 import Vehicles.MountainBike;
+import Vehicles.RoadBike;
 
 import java.util.Scanner;
 
@@ -46,19 +47,20 @@ public class App {
      */
     public static Drivable getVehicle(Console c) {
         String input = c.getInput();
-        String[] words = input.split(" ");
-        StringBuilder str = new StringBuilder();
-        for(String word: words) {
-            //capitalizes the first letter of the word and then appends the rest. There is no space in between
-            str.append(word.substring(0, 1).toUpperCase() + word.substring(1));
+        Drivable myDrive;
+        if(input.equalsIgnoreCase("hondacivic") || input.equalsIgnoreCase("honda civic")) {
+            myDrive = new HondaCivic();
         }
-        if(str.toString().equals("HondaCivic")) {
-            return new HondaCivic();
+        else if(input.equalsIgnoreCase(" kiaoptima") || input.equalsIgnoreCase("kia optima")) {
+            myDrive = new MountainBike();
         }
-        else if(str.toString().equals("MountainBike")) {
-            return new MountainBike();
+        else if(input.equalsIgnoreCase("mountain bike") || input.equalsIgnoreCase("mountain bike")) {
+            myDrive = new MountainBike();
         }
-        return null;
+        else {
+            myDrive = new RoadBike();
+        }
+        return myDrive;
     }
 
     /**

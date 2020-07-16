@@ -15,8 +15,8 @@ public class KiaOptimaTest {
 
     @Before
     public void setUp() throws Exception {
-        this.kiaoptima = new KiaOptima();
         this.kiaOptima = new KiaOptima();
+        this.kia = new KiaOptima();
     }
 
     @Test
