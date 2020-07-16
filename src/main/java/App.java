@@ -2,6 +2,7 @@ import Driving.Drivable;
 import Vehicles.HondaCivic;
 import Vehicles.MountainBike;
 import Vehicles.RoadBike;
+import Vehicles.Teleporter;
 import main.java.Vehicles.KiaOptima;
 
 import java.util.Scanner;
@@ -55,11 +56,14 @@ public class App {
         else if(input.equalsIgnoreCase(" kiaoptima") || input.equalsIgnoreCase("kia optima")) {
             myDrive = new KiaOptima();
         }
-        else if(input.equalsIgnoreCase("mountain bike") || input.equalsIgnoreCase("mountain bike")) {
+        else if(input.equalsIgnoreCase("mountainbike") || input.equalsIgnoreCase("mountain bike")) {
             myDrive = new MountainBike();
         }
-        else {
+        else if(input.equalsIgnoreCase("roadbike") || input.equalsIgnoreCase("road bike")){
             myDrive = new RoadBike();
+        }
+        else {
+            myDrive = new Teleporter();
         }
         return myDrive;
     }
