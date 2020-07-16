@@ -1,15 +1,14 @@
 package Vehicles;
-
 import Driving.Car;
 
-public class HondaCivic extends Car {
+public class Dodge extends Car {
 
-    public HondaCivic() {
+    public Dodge() {
         super();
     }
 
     /**
-     * A civic should need an oil change every
+     * A dodge should need an oil change every
      * 50,000 miles traveled. Once the oil is
      * changed, the car may travel another 50,000
      * miles before needing another oil change.
@@ -18,13 +17,11 @@ public class HondaCivic extends Car {
      */
     @Override
     public Boolean needsOilChange() {
-
         if (distanceBeforeOilChange <= 0) {
             return true;
         }
         return false;
     }
-
     /**
      * This method should reset any flags set
      * from when an oil change was needed. It
@@ -34,14 +31,11 @@ public class HondaCivic extends Car {
      */
     @Override
     public void changeOil() {
-
         if (needsOilChange()) {
             distanceBeforeOilChange = 50000;
             System.out.println("Another 50,000 miles may be traveled before another oil change is needed!");
         }
-
     }
-
     /**
      * the check engine light should be on whenever
      * something is wrong with the car. This class
@@ -51,14 +45,11 @@ public class HondaCivic extends Car {
      */
     @Override
     public Boolean checkEngineLight() {
-
         if (needsOilChange()) {
             return true;
         }
         return false;
-
     }
-
     /**
      * This method should return the total distance
      * traveled by the car. This number can never
@@ -71,15 +62,13 @@ public class HondaCivic extends Car {
     public Double getDistanceTraveled() {
         return distanceTraveled;
     }
-
     /**
-     * Should return the top speed for a Civic (70 MPH)
-     * @return 70.0
+     * Should return the top speed for a Dodge (199 MPH)
+     * @return 199.0
      */
     public Double getTopSpeed() {
-        return 70.0;
+        return 199.0;
     }
-
     /**
      * transport should calculate the time it takes in
      * seconds to travel a distance base on the top
