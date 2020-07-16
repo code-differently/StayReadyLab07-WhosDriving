@@ -3,6 +3,16 @@ package Vehicles;
 import Driving.Car;
 
 public class HondaCivic extends Car {
+
+    private double totalMiles;
+    private double milesToOil;
+
+    public HondaCivic() {
+
+        this.totalMiles = 0;
+        this.milesToOil = 50000;
+
+    }
     /**
      * A civic should need an oil change every
      * 50,000 miles traveled. Once the oil is
@@ -13,7 +23,13 @@ public class HondaCivic extends Car {
      */
     @Override
     public Boolean needsOilChange() {
-        return null;
+
+        if(this.milesToOil <= 0){
+
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -26,6 +42,9 @@ public class HondaCivic extends Car {
     @Override
     public void changeOil() {
 
+
+        this.milesToOil = 50000;
+
     }
 
     /**
@@ -37,7 +56,12 @@ public class HondaCivic extends Car {
      */
     @Override
     public Boolean checkEngineLight() {
-        return null;
+
+        if(needsOilChange() == true){
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -50,7 +74,9 @@ public class HondaCivic extends Car {
      */
     @Override
     public Double getDistanceTraveled() {
-        return null;
+
+
+        return this.totalMiles;
     }
 
     /**
@@ -59,7 +85,9 @@ public class HondaCivic extends Car {
      */
     @Override
     public Double getTopSpeed() {
-        return null;
+
+        return 70.0;
+
     }
 
     /**
@@ -72,6 +100,26 @@ public class HondaCivic extends Car {
      */
     @Override
     public Integer transport(Double distance) {
-        return null;
+
+        double time = (distance / getTopSpeed()) * 3600;
+
+        this.totalMiles += distance;
+        this.milesToOil -= distance;
+
+        return (int) time;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+
+
+        return this.toString().equals(obj.toString());
+    }
+
+    @Override
+    public String toString() {
+
+
+        return "I am a Honda Civic!";
     }
 }

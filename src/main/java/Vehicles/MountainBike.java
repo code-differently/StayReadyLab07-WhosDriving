@@ -2,7 +2,17 @@ package Vehicles;
 
 import Driving.Bike;
 
+import java.security.PublicKey;
+
 public class MountainBike extends Bike {
+
+    private Integer tirePsi;
+    private double topSpeed;
+
+    public MountainBike() {
+
+        inflateTires();
+    }
     /**
      * The top speed of a mountain bike should be 28.5
      * but for every 1 PSI under the recommended tire
@@ -11,9 +21,10 @@ public class MountainBike extends Bike {
      *
      * @return 28.5 minus any reduction to top speed
      */
-    @Override
+    //@Override
     public Double getTopSpeed() {
-        return null;
+
+        return this.topSpeed;
     }
 
 
@@ -30,9 +41,14 @@ public class MountainBike extends Bike {
      * @param distance - length of travel in miles
      * @return time in seconds to travel distance
      */
-    @Override
+   //@Override
     public Integer transport(Double distance) {
-        return null;
+
+        double time = (distance / getTopSpeed()) * 3600;
+
+        deflateTires(distance);
+
+        return (int) time;
     }
 
     /**
@@ -43,7 +59,13 @@ public class MountainBike extends Bike {
      */
     @Override
     public Integer getTirePressure() {
-        return null;
+
+        if(this.tirePsi < 20) {
+
+            this.tirePsi = 20;
+        }
+
+        return this.tirePsi;
     }
 
     /**
@@ -51,6 +73,9 @@ public class MountainBike extends Bike {
      */
     @Override
     public void inflateTires() {
+
+        this.tirePsi = recommendedTirePressure();
+        this.topSpeed = 28.5;
 
     }
 
@@ -60,6 +85,23 @@ public class MountainBike extends Bike {
      */
     @Override
     public Integer recommendedTirePressure() {
-        return null;
+
+        return 30;
     }
+
+    private void deflateTires(Double distance) {
+
+        int val = 0;
+        if(distance > 30 && distance % 30 != 0) {
+
+            this.tirePsi--;
+            this.topSpeed--;
+
+        } else if (distance % 30 == 0) {
+
+            this.tirePsi -= (int) (distance/30);
+            this.topSpeed -= (distance/30);
+        }
+    }
+
 }
