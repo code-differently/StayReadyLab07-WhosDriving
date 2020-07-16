@@ -3,7 +3,7 @@ import Vehicles.HondaCivic;
 import Vehicles.MountainBike;
 import Vehicles.RoadBike;
 import Vehicles.Teleporter;
-import main.java.Vehicles.KiaOptima;
+import Vehicles.KiaOptima;
 
 import java.util.Scanner;
 

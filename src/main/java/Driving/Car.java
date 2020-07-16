@@ -38,4 +38,12 @@ public abstract class Car implements Drivable {
      * @return the total number of miles traveled
      */
     public abstract Double getDistanceTraveled();
+
+    //if we don't have this, we would be comparing objects by where they are references to each other (in the same memory location)
+    //this checks each of the different fields of the object and then you use .equals() of the String class to see whether each field is the same
+    //we are using the overrided toString method in each of the subclass of Vehicle, and not the default toString method
+    @Override
+    public boolean equals(Object obj) {
+        return this.toString().equals(obj.toString());
+    }
 }

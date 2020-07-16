@@ -1,7 +1,7 @@
-package test.java.Vehicles;
+package Vehicles;
 
 import Driving.Car;
-import main.java.Vehicles.KiaOptima;
+import Vehicles.KiaOptima;
 
 import org.junit.Before;
 import org.junit.Test;

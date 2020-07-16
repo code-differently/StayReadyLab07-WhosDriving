@@ -1,4 +1,4 @@
-package main.java.Vehicles;
+package Vehicles;
 
 import Driving.Car;
 
@@ -144,5 +144,22 @@ public class KiaOptima extends Car {
     public String toString() {
         return "needsOilChange: " + needsOilChange + " topSpeed: " + topSpeed + " totalDistance: " + totalDistance
                 + " previousDistance: " + previousDistance + " numTrips: " + numTrips;
+    }
+
+    @Override
+    public boolean equals(Object otherObj) {
+        //if they reference (in same memory location) the same thing then return true
+        if(this == otherObj) return true;
+        //if the other object
+        if(otherObj == null) return false;
+        //semantics change in subclasses because the fields are different, hondacivic could have different fields then a bmwi8
+        //don't use instanceOf in this case
+        //returns the class of the object
+        if(getClass() != this.getClass()) return false;
+        //downcasting to a specific version, in this case, KioOptima
+        //this is why I override equals in each subclass and not in the abstract class for this part
+        KiaOptima other = (KiaOptima) otherObj;
+        //checks to see if the strings are equal
+        return other.toString().equals(other.toString());
     }
 }
