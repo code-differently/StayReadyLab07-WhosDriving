@@ -6,13 +6,13 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class HondaCivicTest {
+public class DodgeTest {
 
-    Car hondaCivic = new HondaCivic();
+    Car Dodge = new Dodge();
 
     @Before
     public void setUp() throws Exception {
-        this.hondaCivic = new HondaCivic();
+        this.Dodge = new Dodge();
     }
 
     @Test
@@ -20,7 +20,7 @@ public class HondaCivicTest {
         // Arrange
 
         // Act
-        Boolean newCivicNeedsOilChange = hondaCivic.needsOilChange();
+        Boolean newCivicNeedsOilChange = Dodge.needsOilChange();
 
         // Assert
         assertFalse(newCivicNeedsOilChange);
@@ -29,10 +29,10 @@ public class HondaCivicTest {
     @Test
     public void needsOilChangeAfterTravel() {
         // Arrange
-        hondaCivic.transport(50000.0);
+        Dodge.transport(50000.0);
 
         // Act
-        Boolean needsOilAfter50kMiles = hondaCivic.needsOilChange();
+        Boolean needsOilAfter50kMiles = Dodge.needsOilChange();
 
         // Assert
         assertTrue(needsOilAfter50kMiles);
@@ -41,11 +41,11 @@ public class HondaCivicTest {
     @Test
     public void needsOilChangeAfterTravelThenOilChange() {
         // Arrange
-        hondaCivic.transport(50010.5);
+        Dodge.transport(50010.5);
 
         // Act
-        hondaCivic.changeOil();
-        Boolean needsOilChangeAfterOilChange = hondaCivic.needsOilChange();
+        Dodge.changeOil();
+        Boolean needsOilChangeAfterOilChange = Dodge.needsOilChange();
 
         // Assert
         assertFalse(needsOilChangeAfterOilChange);
@@ -54,12 +54,12 @@ public class HondaCivicTest {
     @Test
     public void needsOilChangeAfterOilChangeThenTravel49kMiles() {
         // Arrange
-        hondaCivic.transport(51000.0);
+        Dodge.transport(51000.0);
 
         // Act
-        hondaCivic.changeOil();
-        hondaCivic.transport(49000.0);
-        Boolean oilNeedsChanging49kMiles = hondaCivic.needsOilChange();
+        Dodge.changeOil();
+        Dodge.transport(49000.0);
+        Boolean oilNeedsChanging49kMiles = Dodge.needsOilChange();
 
         // Assert
         assertFalse(oilNeedsChanging49kMiles);
@@ -68,12 +68,12 @@ public class HondaCivicTest {
     @Test
     public void needsOilChangeAfterOilChangeThenTravel50kMiles() {
         // Arrange
-        hondaCivic.transport(51000.0);
+        Dodge.transport(51000.0);
 
         // Act
-        hondaCivic.changeOil();
-        hondaCivic.transport(50000.0);
-        Boolean oilNeedsChanging50kMiles = hondaCivic.needsOilChange();
+        Dodge.changeOil();
+        Dodge.transport(50000.0);
+        Boolean oilNeedsChanging50kMiles = Dodge.needsOilChange();
 
         // Assert
         assertTrue(oilNeedsChanging50kMiles);
@@ -82,10 +82,10 @@ public class HondaCivicTest {
     @Test
     public void checkEngineLight() {
         // Arrange
-        hondaCivic.transport(50000.0);
+        Dodge.transport(50000.0);
 
         // Act
-        Boolean checkEngineLightIsOn = hondaCivic.checkEngineLight();
+        Boolean checkEngineLightIsOn = Dodge.checkEngineLight();
 
         // Assert
         assertTrue(checkEngineLightIsOn);
@@ -94,10 +94,10 @@ public class HondaCivicTest {
     @Test
     public void checkEngineLight2() {
         // Arrange
-        hondaCivic.transport(40000.0);
+        Dodge.transport(40000.0);
 
         // Act
-        Boolean checkEngineLightIsOn = hondaCivic.checkEngineLight();
+        Boolean checkEngineLightIsOn = Dodge.checkEngineLight();
 
         // Assert
         assertFalse(checkEngineLightIsOn);
@@ -106,10 +106,10 @@ public class HondaCivicTest {
     @Test
     public void getTopSpeed() {
         // Arrange
-        Double expected = 70.0;
+        Double expected = 199.0;
 
         // Act
-        Double actual = hondaCivic.getTopSpeed();
+        Double actual = Dodge.getTopSpeed();
 
         // Assert
         assertEquals(expected, actual);
@@ -121,7 +121,7 @@ public class HondaCivicTest {
         Integer expected = 2 * 60 * 60;
 
         // Act
-        Integer actual = hondaCivic.transport(70.0 * 2);
+        Integer actual = Dodge.transport(199.0 * 2);
 
         // Assert
         assertEquals(expected, actual);
@@ -133,8 +133,8 @@ public class HondaCivicTest {
         Double expected = 300.0;
 
         // Act
-        hondaCivic.transport(300.0);
-        Double actual = hondaCivic.getDistanceTraveled();
+        Dodge.transport(300.0);
+        Double actual = Dodge.getDistanceTraveled();
 
         // Assert
         assertEquals(expected, actual);
@@ -146,7 +146,7 @@ public class HondaCivicTest {
         Double expected = 0.0;
 
         // Act
-        Double actual = hondaCivic.getDistanceTraveled();
+        Double actual = Dodge.getDistanceTraveled();
 
         // Assert
         assertEquals(expected, actual);

@@ -2,13 +2,13 @@ package Vehicles;
 
 import Driving.Car;
 
-public class HondaCivic extends Car {
+public class Dodge extends Car{
 
-    public HondaCivic() {
+    public Dodge() {
         super();
     }
     /**
-     * A civic should need an oil change every
+     * A dodge should need an oil change every
      * 50,000 miles traveled. Once the oil is
      * changed, the car may travel another 50,000
      * miles before needing another oil change.
@@ -63,11 +63,11 @@ public class HondaCivic extends Car {
         return distanceTraveled;
     }
     /**
-     * Should return the top speed for a Civic (70 MPH)
-     * @return 70.0
+     * Should return the top speed for a Dodge (199 MPH)
+     * @return 199.0
      */
     public Double getTopSpeed() {
-        return 70.0;
+        return 199.0;
     }
     /**
      * transport should calculate the time it takes in
