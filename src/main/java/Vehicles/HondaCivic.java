@@ -3,6 +3,28 @@ package Vehicles;
 import Driving.Car;
 
 public class HondaCivic extends Car {
+    private double distanceTraveled;
+    private double milesTraveled;
+
+    public HondaCivic(){
+        this.distanceTraveled = 0.0;
+        this.milesTraveled = 0.0;
+    }
+
+    public HondaCivic (double distance, double milesTraveled){
+        this.distanceTraveled = distance;
+        this.milesTraveled = milesTraveled;
+    }
+
+    public void setDistanceTraveled(double distance) {
+        this.distanceTraveled = distance;
+    }
+
+
+    public void setMilesTraveled(double milesTraveled) {
+        this.milesTraveled = milesTraveled;
+    }
+
     /**
      * A civic should need an oil change every
      * 50,000 miles traveled. Once the oil is
@@ -13,7 +35,11 @@ public class HondaCivic extends Car {
      */
     @Override
     public Boolean needsOilChange() {
-        return null;
+        if (milesTraveled >= 50000){
+            return true;
+        }else {
+            return false;
+        }
     }
 
     /**
@@ -25,7 +51,8 @@ public class HondaCivic extends Car {
      */
     @Override
     public void changeOil() {
-
+        System.out.println("Car is now able to drive another 50,000 miles");
+        setDistanceTraveled(0);
     }
 
     /**
@@ -37,7 +64,12 @@ public class HondaCivic extends Car {
      */
     @Override
     public Boolean checkEngineLight() {
-        return null;
+        if(needsOilChange()){
+            return true;
+        }else {
+            return false;
+        }
+
     }
 
     /**
@@ -50,7 +82,7 @@ public class HondaCivic extends Car {
      */
     @Override
     public Double getDistanceTraveled() {
-        return null;
+        return distanceTraveled;
     }
 
     /**
@@ -58,8 +90,8 @@ public class HondaCivic extends Car {
      * @return 70.0
      */
     @Override
-    public Double getTopSpeed() {
-        return null;
+    public double getTopSpeed() {
+        return 70.0;
     }
 
     /**
@@ -72,6 +104,9 @@ public class HondaCivic extends Car {
      */
     @Override
     public Integer transport(Double distance) {
-        return null;
+        double time = (distance/getTopSpeed()) * 3600;
+        setDistanceTraveled(this.distanceTraveled + distance);
+        setMilesTraveled(distance);
+        return (int)time;
     }
 }
