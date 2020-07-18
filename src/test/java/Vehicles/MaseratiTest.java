@@ -5,22 +5,23 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-public class HondaCivicTest {
+public class MaseratiTest {
 
-    Car hondaCivic = new HondaCivic();
+    Car maseratie = new Maserati();
 
     @Before
     public void setUp() throws Exception {
-        this.hondaCivic = new HondaCivic();
+        this.maseratie = new Maserati();
     }
 
     @Test
     public void needsOilChange() {
         // Arrange
-        hondaCivic.needsOilChange();
+        maseratie.needsOilChange();
         // Act
-        Boolean newCivicNeedsOilChange = hondaCivic.needsOilChange();
+        Boolean newCivicNeedsOilChange = maseratie.needsOilChange();
         // Assert
         assertFalse(newCivicNeedsOilChange);
     }
@@ -28,9 +29,9 @@ public class HondaCivicTest {
     @Test
     public void needsOilChangeAfterTravel() {
         // Arrange
-        hondaCivic.transport(50000.0);
+        maseratie.transport(50000.0);
         // Act
-        Boolean needsOilAfter50kMiles = hondaCivic.needsOilChange();
+        Boolean needsOilAfter50kMiles = maseratie.needsOilChange();
         // Assert
         assertTrue(needsOilAfter50kMiles);
     }
@@ -38,35 +39,35 @@ public class HondaCivicTest {
     @Test
     public void needsOilChangeAfterTravelThenOilChange() {
         // Arrange
-        hondaCivic.transport(50010.5);
+        maseratie.transport(10010.5);
         // Act
-        hondaCivic.changeOil();
-        Boolean needsOilChangeAfterOilChange = hondaCivic.needsOilChange();
+        maseratie.changeOil();
+        Boolean needsOilChangeAfterOilChange = maseratie.needsOilChange();
         // Assert
         assertFalse(needsOilChangeAfterOilChange);
     }
 
     @Test
-    public void needsOilChangeAfterOilChangeThenTravel49kMiles() {
+    public void needsOilChangeAfterOilChangeThenTravel14kMiles() {
         // Arrange
-        hondaCivic.transport(51000.0);
+        maseratie.transport(15000.0);
         // Act
-        hondaCivic.changeOil();
-        hondaCivic.transport(49000.0);
-        Boolean oilNeedsChanging49kMiles = hondaCivic.needsOilChange();
+        maseratie.changeOil();
+        maseratie.transport(14000.0);
+        Boolean oilNeedsChanging49kMiles = maseratie.needsOilChange();
 
         // Assert
         assertFalse(oilNeedsChanging49kMiles);
     }
 
     @Test
-    public void needsOilChangeAfterOilChangeThenTravel50kMiles() {
+    public void needsOilChangeAfterOilChangeThenTravel15kMiles() {
         // Arrange
-        hondaCivic.transport(51000.0);
+        maseratie.transport(16000.0);
         // Act
-        hondaCivic.changeOil();
-        hondaCivic.transport(50000.0);
-        Boolean oilNeedsChanging50kMiles = hondaCivic.needsOilChange();
+        maseratie.changeOil();
+        maseratie.transport(15000.0);
+        Boolean oilNeedsChanging50kMiles = maseratie.needsOilChange();
 
         // Assert
         assertTrue(oilNeedsChanging50kMiles);
@@ -75,9 +76,9 @@ public class HondaCivicTest {
     @Test
     public void checkEngineLight() {
         // Arrange
-        hondaCivic.transport(50000.0);
+        maseratie.transport(15000.0);
         // Act
-        Boolean checkEngineLightIsOn = hondaCivic.checkEngineLight();
+        Boolean checkEngineLightIsOn = maseratie.checkEngineLight();
 
         // Assert
         assertTrue(checkEngineLightIsOn);
@@ -86,9 +87,9 @@ public class HondaCivicTest {
     @Test
     public void checkEngineLight2() {
         // Arrange
-        hondaCivic.transport(40000.0);
+        maseratie.transport(10000.0);
         // Act
-        Boolean checkEngineLightIsOn = hondaCivic.checkEngineLight();
+        Boolean checkEngineLightIsOn = maseratie.checkEngineLight();
 
         // Assert
         assertFalse(checkEngineLightIsOn);
@@ -97,9 +98,9 @@ public class HondaCivicTest {
     @Test
     public void getTopSpeed() {
         // Arrange
-        Double expected = 70.0;
+        Double expected = 193.0;
         // Act
-        Double actual = hondaCivic.getTopSpeed();
+        Double actual = maseratie.getTopSpeed();
 
         // Assert
         assertEquals(expected, actual);
@@ -110,7 +111,7 @@ public class HondaCivicTest {
         // Arrange
         Integer expected = 2 * 60 * 60;
         // Act
-        Integer actual = hondaCivic.transport(70.0 * 2);
+        Integer actual = maseratie.transport(193.0 * 2);
 
         // Assert
         assertEquals(expected, actual);
@@ -121,8 +122,8 @@ public class HondaCivicTest {
         // Arrange
         Double expected = 300.0;
         // Act
-        hondaCivic.transport(300.0);
-        Double actual = hondaCivic.getDistanceTraveled();
+        maseratie.transport(300.0);
+        Double actual = maseratie.getDistanceTraveled();
 
         // Assert
         assertEquals(expected, actual);
@@ -133,7 +134,7 @@ public class HondaCivicTest {
         // Arrange
         Double expected = 0.0;
         // Act
-        Double actual = hondaCivic.getDistanceTraveled();
+        Double actual = maseratie.getDistanceTraveled();
 
         // Assert
         assertEquals(expected, actual);

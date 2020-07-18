@@ -9,7 +9,7 @@ public interface Drivable {
      *
      * @return top speed in miles per hour
      */
-    Double getTopSpeed();
+    double getTopSpeed();
 
     /**
      * Gets the time in seconds the vehicle takes to travel a distance
