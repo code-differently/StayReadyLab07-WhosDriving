@@ -17,6 +17,7 @@ public class MountainBikeTest {
     @Test
     public void getTopSpeed() {
         // Arrange
+
         Double expected = 28.5;
 
         // Act
