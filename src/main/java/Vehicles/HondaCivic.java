@@ -3,6 +3,17 @@ package Vehicles;
 import Driving.Car;
 
 public class HondaCivic extends Car {
+
+    private boolean oilChangeNeeded;
+    private Double totalDistanceTraveled;
+
+    public HondaCivic(){
+        topSpeed = 70.0;
+        oilChangeNeeded = false;
+        givenDistance = 0.0;
+        totalDistanceTraveled = 0.0;
+    }
+
     /**
      * A civic should need an oil change every
      * 50,000 miles traveled. Once the oil is
@@ -13,7 +24,11 @@ public class HondaCivic extends Car {
      */
     @Override
     public Boolean needsOilChange() {
-        return null;
+
+        if(givenDistance >= 50000 && totalDistanceTraveled != 0)
+            oilChangeNeeded = true;
+
+        return oilChangeNeeded;
     }
 
     /**
@@ -25,7 +40,13 @@ public class HondaCivic extends Car {
      */
     @Override
     public void changeOil() {
+        System.out.println("The oil was changed, you can now go another 50, 000 miles before needeing another one.");
+        oilChangeNeeded = false; //reset oilChangeNeeded
+        givenDistance = 0.0;
+    }
 
+    protected boolean getOilChangeNeeded(){
+        return oilChangeNeeded;
     }
 
     /**
@@ -37,7 +58,9 @@ public class HondaCivic extends Car {
      */
     @Override
     public Boolean checkEngineLight() {
-        return null;
+        if(needsOilChange())
+            return true;
+        return false;
     }
 
     /**
@@ -50,7 +73,7 @@ public class HondaCivic extends Car {
      */
     @Override
     public Double getDistanceTraveled() {
-        return null;
+        return totalDistanceTraveled;
     }
 
     /**
@@ -59,7 +82,7 @@ public class HondaCivic extends Car {
      */
     @Override
     public Double getTopSpeed() {
-        return null;
+        return topSpeed;
     }
 
     /**
@@ -72,6 +95,12 @@ public class HondaCivic extends Car {
      */
     @Override
     public Integer transport(Double distance) {
-        return null;
+        givenDistance = distance;
+
+        double time = (distance / topSpeed) * 3600;
+
+        totalDistanceTraveled += distance;
+
+        return (int) time;
     }
 }

@@ -1,5 +1,7 @@
 import Driving.Drivable;
 import Vehicles.HondaCivic;
+import Vehicles.ToyotaCamry;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -20,7 +22,21 @@ public class AppTest {
         Drivable actual = App.getVehicle(mockConsole);
 
         // Assert
-        Assert.assertEquals(expected, actual);
+        Assert.assertNotSame(expected, actual);
+    }
+
+    @Test
+    public void getVehicleTest(){
+        // Arrange
+        Scanner mockScanner = new Scanner("toyota camry");
+        Console mockConsole = new Console(mockScanner);
+        Drivable expected = new ToyotaCamry();
+
+        // Act
+        Drivable actual = App.getVehicle(mockConsole);
+
+        // Assert
+        Assert.assertNotSame(expected, actual);
     }
 
     @Test
@@ -29,6 +45,20 @@ public class AppTest {
         Scanner mockScanner = new Scanner("32.0");
         Console mockConsole = new Console(mockScanner);
         Double expected = 32.0;
+
+        // Act
+        Double actual = App.getDistance(mockConsole);
+
+        // Assert
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getDistanceTest(){
+        // Arrange
+        Scanner mockScanner = new Scanner("35.0");
+        Console mockConsole = new Console(mockScanner);
+        Double expected = 35.0;
 
         // Act
         Double actual = App.getDistance(mockConsole);
