@@ -2,10 +2,10 @@ package Vehicles;
 
 import Driving.Bike;
 
-public class MountainBike extends Bike {
-
-    public MountainBike(){
-        tirePressure = 30;
+public class BmxBike extends Bike{
+    
+    public BmxBike(){
+        tirePressure = 35;
     }
 
     /**
@@ -18,7 +18,7 @@ public class MountainBike extends Bike {
      */
     @Override
     public Double getTopSpeed() {
-        return (28.5 - (recommendedTirePressure() - getTirePressure()));
+        return (33.5- (recommendedTirePressure() - getTirePressure()));
     }
 
 
@@ -39,9 +39,9 @@ public class MountainBike extends Bike {
     public Integer transport(Double distance) {
         double time = (distance / getTopSpeed()) * 3600;
 
-        while(getTirePressure() != 20 && distance >= 30){
+        while(getTirePressure() != 20 && distance >= 35){
             tirePressure--;
-            distance -= 30;
+            distance -= 35;
         }
 
         return (int) time;
@@ -72,6 +72,6 @@ public class MountainBike extends Bike {
      */
     @Override
     public Integer recommendedTirePressure() {
-        return 30;
+        return 35;
     }
 }

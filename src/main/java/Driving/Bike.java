@@ -1,6 +1,9 @@
 package Driving;
 
 public abstract class Bike implements Drivable {
+
+    protected Integer tirePressure;
+
     /**
      * It is important on a bike that the tire pressure
      * is monitored closely. The getTirePressure method
@@ -23,4 +26,8 @@ public abstract class Bike implements Drivable {
      * @return PSI as an Integer
      */
     public abstract Integer recommendedTirePressure();
+
+    public abstract Double getTopSpeed();
+
+    public abstract Integer transport(Double distance);
 }

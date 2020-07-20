@@ -1,4 +1,8 @@
 import Driving.Drivable;
+import Vehicles.BmxBike;
+import Vehicles.HondaCivic;
+import Vehicles.MountainBike;
+import Vehicles.ToyotaCamry;
 
 import java.util.Scanner;
 
@@ -44,7 +48,21 @@ public class App {
      */
     public static Drivable getVehicle(Console c) {
         String input = c.getInput();
-        return null;
+        
+        Drivable vehicle;
+
+        if (input.equalsIgnoreCase("honda civic"))
+            vehicle = new HondaCivic();
+        else if(input.equalsIgnoreCase("mountain bike"))   
+            vehicle = new MountainBike();
+        else if(input.equalsIgnoreCase("toyota camry"))   
+            vehicle =  new ToyotaCamry();
+        else if(input.equalsIgnoreCase("bmx bike"))   
+            vehicle = new BmxBike();
+        else
+            vehicle = null;
+
+        return vehicle;
     }
 
     /**
@@ -56,6 +74,7 @@ public class App {
      */
     public static Double getDistance(Console c) {
         String input = c.getInput();
-        return null;
+    
+        return Double.valueOf(input);
     }
 }
