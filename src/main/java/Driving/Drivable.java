@@ -2,6 +2,7 @@ package Driving;
 
 public interface Drivable {
 
+
     /**
      * Gets the top speed of the drivable vehicle
      *
@@ -10,6 +11,8 @@ public interface Drivable {
      * @return top speed in miles per hour
      */
     Double getTopSpeed();
+
+
 
     /**
      * Gets the time in seconds the vehicle takes to travel a distance

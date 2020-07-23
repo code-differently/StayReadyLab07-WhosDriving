@@ -2,7 +2,7 @@ package Vehicles;
 
 import Driving.Bike;
 
-public class MountainBike extends Bike {
+public class Scooter extends Bike {
     private final Integer recommendedPSI = 30;
     private int currentPSI = recommendedPSI;
     private Double maxSpeed = 28.5;
@@ -75,22 +75,7 @@ public class MountainBike extends Bike {
         getCurrentPSI(distanceTraveled);
         return maxSpeed - (recommendedPSI- currentPSI);
     }
-    /**
-     * transport should calculate the time it takes in
-     * seconds to travel a distance base on the top
-     * speed
-     *
-     * and update the tire pressure. Long trips
-     * on a mountain bike will reduce its PSI,
-     * so for
-     * every 30 miles traveled in a single trip, the
-     * tires of the bike should reduce 1 PSI until
-     * the tires register 20 PSI where no more air
-     * will be lost on trips.
-     *
-     * @param distance - length of travel in miles
-     * @return time in seconds to travel distance
-     */
+
     @Override
     public Integer transport(Double distance) {
 
@@ -104,12 +89,7 @@ public class MountainBike extends Bike {
         return time;
     }
 
-    /**
-     * Gets the current amount of pressure in PSI
-     * in the tires
-     *
-     * @return PSI as Integer
-     */
+
     @Override
     public Integer getTirePressure() {
         return getCurrentPSI(distanceTraveled);
@@ -133,3 +113,4 @@ public class MountainBike extends Bike {
         return recommendedPSI;
     }
 }
+

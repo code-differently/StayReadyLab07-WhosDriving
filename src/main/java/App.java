@@ -1,4 +1,6 @@
 import Driving.Drivable;
+import Vehicles.HondaCivic;
+import Vehicles.MountainBike;
 
 import java.util.Scanner;
 
@@ -17,20 +19,27 @@ public class App {
      */
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        if (args[0].equals("test"))
+      //  String [] tariq = new String[1];
+        //  tariq[0] = "test";
+        if (args[0].equals("test")) {
             in = new Scanner(args[1]);
-        Console c = new Console(in);
 
-        System.out.println("What kinda of vehicle do you want to drive");
-        Drivable vehicle = getVehicle(c);
+            Console c = new Console(in);
 
-        System.out.println("How far do you want to travel");
-        Double distance = getDistance(c);
+            System.out.println("What kinda of vehicle do you want to drive");
+            Drivable vehicle = getVehicle(c);
 
-        Integer timeTraveled = vehicle.transport(distance);
+            System.out.println("How far do you want to travel");
+            Double distance = getDistance(c);
 
-        System.out.println(String.format("You traveled for %d seconds", timeTraveled));
-        App.appExecutionStatus = 0;
+            Integer timeTraveled = vehicle.transport(distance);
+
+            System.out.println(String.format("You traveled for %d seconds", timeTraveled));
+            App.appExecutionStatus = 0;
+        }
+        else {
+            System.out.println("Check the arg[0] equals dummy!");
+        }
     }
 
     /**
@@ -44,7 +53,13 @@ public class App {
      */
     public static Drivable getVehicle(Console c) {
         String input = c.getInput();
-        return null;
+
+        if (input.equals("honda civic")) {
+             return new HondaCivic();
+        } else {
+            return new MountainBike();
+
+        }
     }
 
     /**
@@ -56,6 +71,7 @@ public class App {
      */
     public static Double getDistance(Console c) {
         String input = c.getInput();
-        return null;
+
+        return Double.parseDouble(input);
     }
 }
