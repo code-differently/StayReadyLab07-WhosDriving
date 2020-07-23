@@ -8,7 +8,7 @@ import org.junit.Assert;
 import static org.junit.Assert.*;
 
 public class HondaCivicTest {
-    Car hondaCivic = new HondaCivic();
+    Car hondaCivic;
     @Before
     public void setUp()  {
         this.hondaCivic = new HondaCivic();
