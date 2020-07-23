@@ -1,19 +1,13 @@
 package Vehicles;
 
 import Driving.Car;
-import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
+import org.junit.Assert;
 
 public class HondaCivicTest {
 
     Car hondaCivic = new HondaCivic();
 
-    @Before
-    public void setUp() throws Exception {
-        this.hondaCivic = new HondaCivic();
-    }
 
     @Test
     public void needsOilChange() {
@@ -22,7 +16,7 @@ public class HondaCivicTest {
         // Act
         Boolean newCivicNeedsOilChange = hondaCivic.needsOilChange();
         // Assert
-        assertFalse(newCivicNeedsOilChange);
+        Assert.assertFalse(newCivicNeedsOilChange);
     }
 
     @Test
@@ -32,7 +26,7 @@ public class HondaCivicTest {
         // Act
         Boolean needsOilAfter50kMiles = hondaCivic.needsOilChange();
         // Assert
-        assertTrue(needsOilAfter50kMiles);
+        Assert.assertTrue(needsOilAfter50kMiles);
     }
 
     @Test
@@ -43,7 +37,7 @@ public class HondaCivicTest {
         hondaCivic.changeOil();
         Boolean needsOilChangeAfterOilChange = hondaCivic.needsOilChange();
         // Assert
-        assertFalse(needsOilChangeAfterOilChange);
+        Assert.assertFalse(needsOilChangeAfterOilChange);
     }
 
     @Test
@@ -56,7 +50,7 @@ public class HondaCivicTest {
         Boolean oilNeedsChanging49kMiles = hondaCivic.needsOilChange();
 
         // Assert
-        assertFalse(oilNeedsChanging49kMiles);
+        Assert.assertFalse(oilNeedsChanging49kMiles);
     }
 
     @Test
@@ -69,7 +63,7 @@ public class HondaCivicTest {
         Boolean oilNeedsChanging50kMiles = hondaCivic.needsOilChange();
 
         // Assert
-        assertTrue(oilNeedsChanging50kMiles);
+        Assert.assertTrue(oilNeedsChanging50kMiles);
     }
 
     @Test
@@ -80,7 +74,7 @@ public class HondaCivicTest {
         Boolean checkEngineLightIsOn = hondaCivic.checkEngineLight();
 
         // Assert
-        assertTrue(checkEngineLightIsOn);
+        Assert.assertTrue(checkEngineLightIsOn);
     }
 
     @Test
@@ -91,7 +85,7 @@ public class HondaCivicTest {
         Boolean checkEngineLightIsOn = hondaCivic.checkEngineLight();
 
         // Assert
-        assertFalse(checkEngineLightIsOn);
+        Assert.assertFalse(checkEngineLightIsOn);
     }
 
     @Test
@@ -102,7 +96,7 @@ public class HondaCivicTest {
         Double actual = hondaCivic.getTopSpeed();
 
         // Assert
-        assertEquals(expected, actual);
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
@@ -113,7 +107,7 @@ public class HondaCivicTest {
         Integer actual = hondaCivic.transport(70.0 * 2);
 
         // Assert
-        assertEquals(expected, actual);
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
@@ -125,7 +119,7 @@ public class HondaCivicTest {
         Double actual = hondaCivic.getDistanceTraveled();
 
         // Assert
-        assertEquals(expected, actual);
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
@@ -136,6 +130,6 @@ public class HondaCivicTest {
         Double actual = hondaCivic.getDistanceTraveled();
 
         // Assert
-        assertEquals(expected, actual);
+        Assert.assertEquals(expected, actual);
     }
 }

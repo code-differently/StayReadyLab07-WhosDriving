@@ -1,8 +1,8 @@
 import org.junit.Test;
-
 import java.util.Scanner;
+import org.junit.Assert;
 
-import static org.junit.Assert.*;
+
 
 public class ConsoleTest {
 
@@ -17,6 +17,6 @@ public class ConsoleTest {
         String actual = c.getInput();
 
         // Assert
-        assertEquals(expected, actual);
+        Assert.assertEquals(expected, actual);
     }
 }

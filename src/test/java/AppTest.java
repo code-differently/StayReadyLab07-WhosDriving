@@ -2,10 +2,8 @@ import Driving.Drivable;
 import Vehicles.HondaCivic;
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.util.Scanner;
 
-import static org.junit.Assert.*;
 
 public class AppTest {
 
@@ -46,6 +44,6 @@ public class AppTest {
         App.main(args);
 
         // Assert
-        assertEquals(App.appExecutionStatus, 0);
+        Assert.assertEquals(App.appExecutionStatus, 0);
     }
 }

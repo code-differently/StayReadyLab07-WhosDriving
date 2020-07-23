@@ -1,23 +1,22 @@
 package Vehicles;
+
 import Driving.Car;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;
-import static org.junit.Assert.*;
+
 
 public class BMWTest {
+
     Car BMW = new BMW();
-    @Before
-    public void setUp() throws Exception {
-        this.BMW = new BMW();
-    }
+
+
     @Test
     public void needsOilChange() {
         // Arrange
         // Act
         Boolean newCivicNeedsOilChange = BMW.needsOilChange();
         // Assert
-        assertFalse(newCivicNeedsOilChange);
+        Assert.assertFalse(newCivicNeedsOilChange);
     }
     @Test
     public void needsOilChangeAfterTravel() {
@@ -26,7 +25,7 @@ public class BMWTest {
         // Act
         Boolean needsOilAfter50kMiles = BMW.needsOilChange();
         // Assert
-        assertTrue(needsOilAfter50kMiles);
+        Assert.assertTrue(needsOilAfter50kMiles);
     }
     @Test
     public void needsOilChangeAfterTravelThenOilChange() {
@@ -36,7 +35,7 @@ public class BMWTest {
         BMW.changeOil();
         Boolean needsOilChangeAfterOilChange = BMW.needsOilChange();
         // Assert
-        assertFalse(needsOilChangeAfterOilChange);
+        Assert.assertFalse(needsOilChangeAfterOilChange);
     }
     @Test
     public void needsOilChangeAfterOilChangeThenTravel49kMiles() {
@@ -66,7 +65,7 @@ public class BMWTest {
         // Act
         Boolean checkEngineLightIsOn = BMW.checkEngineLight();
         // Assert
-        assertTrue(checkEngineLightIsOn);
+        Assert.assertTrue(checkEngineLightIsOn);
     }
     @Test
     public void checkEngineLight2() {
@@ -75,7 +74,7 @@ public class BMWTest {
         // Act
         Boolean checkEngineLightIsOn = BMW.checkEngineLight();
         // Assert
-        assertFalse(checkEngineLightIsOn);
+        Assert.assertFalse(checkEngineLightIsOn);
     }
     @Test
     public void getTopSpeed() {
@@ -84,15 +83,19 @@ public class BMWTest {
         // Act
         Double actual = BMW.getTopSpeed();
         // Assert
-        assertEquals(expected, actual);
+        Assert.assertEquals(expected, actual);
     }
     @Test
     public void transport() {
         // Arrange
-        Integer expected = 2 * 60 * 60;
+        Integer expected = 2 * 3600;
         // Act
-        Integer actual = BMW.transport(140.0);
+        Integer actual = BMW.transport(100.0 * 2);
+        // Assert
+        Assert.assertEquals(expected, actual);
     }
+
+
     @Test
     public void getDistanceTraveled(){
         // Arrange
@@ -101,7 +104,7 @@ public class BMWTest {
         BMW.transport(300.0);
         Double actual = BMW.getDistanceTraveled();
         // Assert
-        assertEquals(expected, actual);
+        Assert.assertEquals(expected, actual);
     }
     @Test
     public void getDistanceTraveledNewCar() {
@@ -111,6 +114,6 @@ public class BMWTest {
         BMW.transport(0.0);
         Double actual = BMW.getDistanceTraveled();
         // Assert
-        assertEquals(expected, actual);
+        Assert.assertEquals(expected, actual);
     }
 }

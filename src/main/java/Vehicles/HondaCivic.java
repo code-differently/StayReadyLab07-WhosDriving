@@ -1,7 +1,12 @@
 package Vehicles;
 import Driving.Car;
+
+
 public class HondaCivic extends Car {
+
     private double distanceTraveled;
+
+
     public void setDistanceTraveled(double distanceTraveled) {
         this.distanceTraveled = distanceTraveled;
     }
@@ -32,7 +37,6 @@ public class HondaCivic extends Car {
     public void changeOil() {
         if(needsOilChange() == true){
             distanceTraveled = 0;
-            System.out.println("50,000 miles may be traveled before another oil change is needed ");
         }
     }
     /**
@@ -62,6 +66,7 @@ public class HondaCivic extends Car {
      * Should return the top speed for a Civic (70 MPH)
      * @return 70.0
      */
+    @Override
     public Double getTopSpeed() {
         return 70.0;
     }
@@ -73,6 +78,7 @@ public class HondaCivic extends Car {
      * @param distance - length of travel in miles
      * @return time in seconds to travel distance
      */
+    @Override
     public Integer transport(Double distance) {
         Integer time = (int)(distance/getTopSpeed());
         time = time * 3600;
