@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 public class HondaCivicTest {
     Car hondaCivic = new HondaCivic();
     @Before
-    public void setUp() throws Exception {
+    public void setUp()  {
         this.hondaCivic = new HondaCivic();
     }
     @Test
