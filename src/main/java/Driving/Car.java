@@ -1,6 +1,10 @@
 package Driving;
 
 public abstract class Car implements Drivable {
+
+    protected int trip;
+    protected double topSpeed;
+    protected double distanceTraveled;
     /**
      * Cars eventually need their oil changed.
      * Most cars simply need oil after a certain
