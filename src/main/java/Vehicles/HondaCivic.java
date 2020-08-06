@@ -2,7 +2,9 @@ package Vehicles;
 
 import Driving.Car;
 
-public class HondaCivic extends Car {
+public class HondaCivic extends Car 
+{
+    private double distanceTraveled;
     /**
      * A civic should need an oil change every
      * 50,000 miles traveled. Once the oil is
@@ -12,8 +14,16 @@ public class HondaCivic extends Car {
      * @return true if an oil change is needed
      */
     @Override
-    public Boolean needsOilChange() {
-        return null;
+    public Boolean needsOilChange() 
+    {
+        if(distanceTraveled >= 50000.0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /**
@@ -24,8 +34,13 @@ public class HondaCivic extends Car {
      * change is needed.
      */
     @Override
-    public void changeOil() {
-
+    public void changeOil() 
+    {
+        if(needsOilChange() == true)
+        {
+            distanceTraveled = 0.0;
+            System.out.println("");
+        }
     }
 
     /**
@@ -36,8 +51,9 @@ public class HondaCivic extends Car {
      * @return true if anything is wrong with the car
      */
     @Override
-    public Boolean checkEngineLight() {
-        return null;
+    public Boolean checkEngineLight() 
+    {
+        return needsOilChange();
     }
 
     /**
@@ -49,8 +65,9 @@ public class HondaCivic extends Car {
      * @return total distance as a Double
      */
     @Override
-    public Double getDistanceTraveled() {
-        return null;
+    public Double getDistanceTraveled() 
+    {
+        return distanceTraveled;
     }
 
     /**
@@ -58,8 +75,9 @@ public class HondaCivic extends Car {
      * @return 70.0
      */
     @Override
-    public Double getTopSpeed() {
-        return null;
+    public Double getTopSpeed() 
+    {
+        return 70.0;
     }
 
     /**
@@ -71,7 +89,11 @@ public class HondaCivic extends Car {
      * @return time in seconds to travel distance
      */
     @Override
-    public Integer transport(Double distance) {
-        return null;
+    public Integer transport(Double distance) 
+    {
+        distanceTraveled += distance;
+        milesSinceOilChange += distance;
+
+        return (int)Math.round(distance / (getTopSpeed() / 3600));
     }
 }

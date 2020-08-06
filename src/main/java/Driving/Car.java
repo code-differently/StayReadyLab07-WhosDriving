@@ -1,6 +1,10 @@
 package Driving;
 
-public abstract class Car implements Drivable {
+public abstract class Car implements Drivable 
+{
+    protected double distanceTraveled = 0.0;
+    protected double milesSinceOilChange = 0.0;
+
     /**
      * Cars eventually need their oil changed.
      * Most cars simply need oil after a certain
