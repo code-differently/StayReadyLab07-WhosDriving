@@ -1,8 +1,11 @@
 import Driving.Drivable;
+import Vehicles.HondaCivic;
+import Vehicles.MountainBike;
 
 import java.util.Scanner;
 
-public class App {
+public class App 
+{
     static int appExecutionStatus = -1;
 
     /**
@@ -15,21 +18,27 @@ public class App {
      * will change the appExecutionStatus variable to 0;
      * @param args
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         Scanner in = new Scanner(System.in);
         if (args[0].equals("test"))
+        {
             in = new Scanner(args[1]);
-        Console c = new Console(in);
+            Console c = new Console(in);
+        }
 
         System.out.println("What kinda of vehicle do you want to drive");
+
         Drivable vehicle = getVehicle(c);
 
         System.out.println("How far do you want to travel");
+
         Double distance = getDistance(c);
 
         Integer timeTraveled = vehicle.transport(distance);
 
         System.out.println(String.format("You traveled for %d seconds", timeTraveled));
+
         App.appExecutionStatus = 0;
     }
 
@@ -42,8 +51,19 @@ public class App {
      * @param c
      * @return input from Console c as Drivable
      */
-    public static Drivable getVehicle(Console c) {
+    public static Drivable getVehicle(Console c) 
+    {
         String input = c.getInput();
+
+        if(input.equalsIgnoreCase("Honda Civic")) 
+        {
+            return new HondaCivic();
+        } 
+        else if(input.equalsIgnoreCase("Mountain Bike")) 
+        {
+            return new MountainBike();
+        } 
+
         return null;
     }
 
@@ -54,8 +74,10 @@ public class App {
      * @param c
      * @return Input from Console c as Double
      */
-    public static Double getDistance(Console c) {
+    public static Double getDistance(Console c) 
+    {
         String input = c.getInput();
-        return null;
+
+        return Double.parseDouble(input);
     }
 }
